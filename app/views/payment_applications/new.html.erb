@@ -1,0 +1,50 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<%= form_for @payment_application do |f| %>
+  <% if @payment_application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@payment_application.errors.count, "error") %>
+        &nbsp;prohibited this user from being saved:</h2>
+      <ul>
+        <% @payment_application.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <h3><%= I18n.t 'views_payment_application.title' %></h3>
+  </p>
+
+  <p>
+    <label for="item_name">
+      <%= I18n.t 'activerecord.attributes.payment_application.receive_payment_company'%>
+    </label><br/>
+    <%= f.text_field :receive_payment_company, :size => "60" %>
+  </p>
+
+  <p>
+    <label for="use">
+    	<%= I18n.t 'activerecord.attributes.payment_application.use'%>
+    </label>
+    <br />
+    <%= render 'application/use_radio', :f => f, :use_names => PaymentApplication::USE%>
+  </p>
+
+  <p>
+    <label for="sum">
+    	<%= I18n.t 'activerecord.attributes.payment_application.sum'%>
+    </label><br/>
+    <%= f.text_field :sum, :size => "5" %>
+  </p>
+
+  <p>
+    <label for="reason"><%= I18n.t 'activerecord.attributes.payment_application.reason'%>
+    </label><br/>
+    <%= f.text_area :reason, :size => "60x3" %>
+  </p>
+
+  <p><%= submit_tag I18n.t('operate.commit') %></p>
+<% end %>
+
+<%= link_to I18n.t('operate.back'), payment_applications_path %>

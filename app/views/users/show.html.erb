@@ -1,0 +1,52 @@
+<%= render 'side_bar/sys_manage_sidebar' %>
+
+<h3><%= I18n.t 'views_users.persional_infos' %></h3>
+
+<p>
+	<label for="name">
+		<%= I18n.t 'activerecord.attributes.user.name', :default => 'Login Name' %>
+	</label><br />
+	<%= @user.name %>
+</p>
+
+<p>
+  <label for="real_name">
+  	<%= I18n.t 'activerecord.attributes.user.real_name', :default => 'Real Name' %>
+  </label><br />
+  <%= @user.real_name %>
+</p>
+
+<p>
+  <label for="email">
+  	<%=  I18n.t 'activerecord.attributes.user.email', :default => 'Email' %>
+  </label><br />
+  <%= @user.email %>
+</p>
+
+<p>
+  <label for="add_roles">
+  	<%= I18n.t 'activerecord.models.role', :default => 'Role' %>
+  </label><br />
+  <% Role.all.each do |role| %>
+  	<% if @user.roles.include?(role) %>
+    	<label><%= role.name %></label>
+    <% end %>
+  <%end%>
+</p>
+
+<p>
+  <label for="position">
+  	<%= I18n.t 'activerecord.attributes.user.position', :default => 'position' %>
+  </label><br />
+  <%= @user.position%>
+</p>
+
+<p>
+  <label for="parent_id">
+  	<%= I18n.t 'activerecord.attributes.user.parent_id', :default => 'parent' %>
+  </label><br />
+  <%= get_parent_name(@user)%>
+</p>
+
+<%= link_to I18n.t('operate.edit'), edit_user_path(@user) %> |
+<%= link_to I18n.t('operate.back'), users_path %>

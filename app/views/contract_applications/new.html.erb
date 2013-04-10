@@ -1,0 +1,50 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<%= form_for @contract_application do |f| %>
+  <% if @contract_application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contract_application.errors.count, "error") %>
+        &nbsp;prohibited this user from being saved:</h2>
+      <ul>
+        <% @contract_application.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <h3><%= I18n.t 'views_contract_application.title' %></h3>
+  </p>
+
+  <p>
+    <label for="item_name">
+      <%= I18n.t 'activerecord.attributes.contract_application.contract_name'%>
+    </label><br/>
+    <%= f.text_field :contract_name, :size => "60" %>
+  </p>
+
+  <p>
+    <label for="use">
+    	<%= I18n.t 'activerecord.attributes.contract_application.use'%>
+    </label>
+    <br />
+    <%= render 'application/use_radio', :f => f, :use_names => ContractApplication::USE%>
+  </p>
+
+  <p>
+    <label for="sum">
+    	<%= I18n.t 'activerecord.attributes.contract_application.sum'%>
+    </label><br/>
+    <%= f.text_field :sum, :size => "5" %>
+  </p>
+
+  <p>
+    <label for="reason"><%= I18n.t 'activerecord.attributes.contract_application.reason'%>
+    </label><br/>
+    <%= f.text_area :reason, :size => "60x3" %>
+  </p>
+
+  <p><%= submit_tag I18n.t('operate.commit') %></p>
+<% end %>
+
+<%= link_to I18n.t('operate.back'), contract_applications_path %>

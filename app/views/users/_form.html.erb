@@ -1,0 +1,69 @@
+
+<%= form_for user do |settings| %>
+    <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %>
+        prohibited this user from being saved:</h2>
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <p>
+    <label for="name"><%= I18n.t 'activerecord.attributes.user.name', :default => 'login_name' %></label></p>
+  <p>
+    <%= settings.text_field :name ,:class=>get_disable_class_name_if_necessary%>
+  </p>
+
+<p>
+  <label for="email"><%=  I18n.t 'activerecord.attributes.user.email', :default => 'Email' %></label><br />
+  <%= settings.text_field :email %>
+</p>
+
+<div>
+  <label for="password"><%=  I18n.t 'activerecord.attributes.user.password', :default => 'Password' %></label><br />
+  <p class="entryhelp"><%=  I18n.t 'views_users.password_prompt', :default => 'Enter a new password twice to change your password. (must be longer than 5 characters)' %></p>
+  <%= settings.password_field :password, :size => 16 %>
+  <span class="entryhelp">(<%=  I18n.t 'views_users.once', :default => 'once' %>)</span><br />
+  <%= settings.password_field :password_confirmation, :size => 16 %>
+  <span class="entryhelp">(<%=  I18n.t 'activerecord.attributes.user.password_confirmation', :default => 'and again' %>)</span>
+</div>
+
+<p>
+  <label for="real_name"><%= I18n.t 'activerecord.attributes.user.real_name', :default => 'Real name' %></label><br />
+  <%= settings.text_field :real_name ,:class=>get_disable_class_name_if_necessary%>
+</p>
+
+<p>
+  <label for="add_roles"><%= I18n.t 'views_users.add_roles', :default => 'add role' %></label><br />
+  <%Role.all.each do |role| %>
+    <label><%= role.name %></label>
+    <%if user.roles.include?(role)%>
+      <%= settings.radio_button :role_ids, role.id, :checked=>true ,:class=>get_disable_class_name_if_necessary%> &nbsp;&nbsp;&nbsp;
+    <%else%>
+      <%= settings.radio_button :role_ids, role.id, :checked=>false,:class=>get_disable_class_name_if_necessary%> &nbsp;&nbsp;&nbsp;
+    <%end%>
+  <%end%>
+</p>
+
+<p>
+  <label for="add_positions"><%= I18n.t 'views_users.add_positions', :default => 'add position' %></label><br />
+  <%User::Positions.each_value do |position| %>
+    <label><%= position %></label>
+    <%= settings.radio_button :position, position,:class=>get_disable_class_name_if_necessary%> &nbsp;&nbsp;&nbsp;
+  <%end%>
+</p>
+
+<p>
+  <label for="parent_id"><%= I18n.t 'activerecord.attributes.user.parent_id', :default => 'add parent' %></label><br />
+
+  <%= settings.text_field :parent_id , :value=>get_parent_name(user), :class=>"autocomplete_input_single_text #{get_disable_class_name_if_necessary}"%>
+</p>
+
+<p><%= settings.submit%></p>
+<% end %>
+

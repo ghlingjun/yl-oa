@@ -1,0 +1,6 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<h3><%= I18n.t 'views_billing_application.title' %></h3>
+
+<%= render 'detail_info', :application=>@billing_application %>
+
+<%= link_to I18n.t('operate.back'), billing_applications_path %>

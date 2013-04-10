@@ -1,0 +1,13 @@
+<% content_for :right do %>
+  <h5 style="margin-bottom:1.0em;">
+    <%= I18n.t 'side_bar.admin_affaire.statistics' %>
+  </h5>
+  <ul class="flat" style="margin-top:1em;">
+    <li>
+      <%= link_to I18n.t('side_bar.admin_affaire.leave_application'), admin_leave_applications_path %>
+    </li>
+    <li>
+      <%= link_to I18n.t('side_bar.admin_affaire.work_log'), admin_work_logs_path%>
+    </li>
+  </ul>
+<% end %>

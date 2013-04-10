@@ -1,0 +1,38 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+
+<h1 style="margin-top:0;"><%= I18n.t("views_work_log.title") %></h1>
+
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <th class="la" width="50%">
+      <%= I18n.t 'activerecord.attributes.work_log.content' %>
+    </th>
+    <th class="la" width="15%"><%= I18n.t 'views_work_log.owner' %></th>
+    <!-- <th class="la" width="20%">
+      <%= I18n.t 'activerecord.attributes.common.create_at' %>
+    </th> -->
+    <th class="la" width="20%"><%= I18n.t 'views_work_log.logdate' %></th>
+    <th class="la" width="15%"><%= I18n.t 'views_work_log.operate' %></th>
+  </tr>
+
+<% @work_logs.each do |work_log| %>
+  <tr>
+    <td><%= link_to  truncate(strip_tags(work_log.content), :length => 40), work_log_path(work_log), :class=>"title" %></td>
+    <td><%= work_log.user_real_name %></td>
+    <!-- <td><%= work_log.created_at %></td> -->
+    <td><%= work_log.log_date.to_date %></td>
+    <td>
+      <%if work_log.user == current_user%>
+        <%= link_to  I18n.t('operate.edit'), edit_work_log_path(work_log), :class => "tiny", :rel => "directory", :style => "float:right" %><br/>
+        <%= link_to  I18n.t('operate.delete'), work_log, :class => "tiny", :rel => "directory", :style => "float:right", :confirm => 'Are you sure?', :method => :delete %>
+      <%else%>
+         <%= link_to I18n.t('operate.show'), work_log_path(work_log), :class => "tiny", :rel => "directory", :style => "float:right" %>
+      <%end%>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<%= render 'application/pagination', :posts =>  @work_logs %>
+
+<p><%= link_to I18n.t('operate.new') + I18n.t('activerecord.models.work_log'), new_work_log_path, :class => "utility" %></p>

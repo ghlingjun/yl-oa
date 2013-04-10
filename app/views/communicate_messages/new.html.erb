@@ -1,0 +1,23 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<%= form_for @communicate_message do |f| %>
+  <% if @communicate_message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@communicate_message.errors.count, "error") %>
+        prohibited this user from being saved:</h2>
+      <ul>
+      <% @communicate_message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <p><label for="content"><%= I18n.t 'activerecord.attributes.message.content'%></label><br/>
+  <%= f.text_area :content %></p>
+
+  <p><label for="receiver_ids"><%= I18n.t 'views_communicate_message.receiver' %></label><br/>
+  <%= f.text_field :receiver_ids , :value=>"", :class=>"autocomplete_input_multip_text"%></p>
+  <p><%= submit_tag I18n.t('operate.create') %></p>
+<% end %>
+<%= link_to I18n.t('operate.back'), communicate_messages_path %>

@@ -1,0 +1,43 @@
+<%= render 'side_bar/admin_affaire_side_bar' %>
+<h1 style="margin-top:0;">
+  <%= I18n.t "activerecord.models.leave_application" %>
+</h1>
+<p class="subtitle">
+  <%= I18n.t "views_leave_application.total_application_prompt" %>:&nbsp;
+  <%= @leave_applications.size %>
+</p>
+
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.application.sender' %>
+    </th>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.leave_application.start_at' %>
+    </th>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.leave_application.end_at' %>
+    </th>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.leave_application.use' %>
+    </th>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.application.created_at' %>
+    </th>
+  </tr>
+  <% @leave_applications.each do |application| %>
+    <tr>
+      <td><%= application.sender_real_name %></td>
+      <td><%= application.start_at %></td>
+      <td>
+        <%if application.real_end_at?%>
+            <%= application.real_end_at %>
+        <%else%>
+            <%= application.end_at %>
+        <%end%>
+      </td>
+      <td><%= application.use %></td>
+      <td><%= application.created_at %></td>
+    </tr>
+  <% end %>
+</table>

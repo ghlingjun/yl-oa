@@ -1,0 +1,40 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+
+<h1 style="margin-top:0;">
+  <%= I18n.t "activerecord.models.payment_application" %>
+</h1>
+<p class="subtitle">
+  <%= I18n.t "views_payment_application.total_application_prompt" %>:&nbsp;
+  <%= @size %>
+</p>
+
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <th width="55%" class="la">
+      <%= I18n.t 'activerecord.attributes.payment_application.receive_payment_company' %>
+    </th>
+    <th width="15%" class="la">
+      <%= I18n.t 'activerecord.attributes.common.state' %>
+    </th>
+    <th width="30%" class ="la">
+      <%= I18n.t 'activerecord.attributes.application.created_at' %>
+    </th>
+  </tr>
+  <% @payment_applications.each do |application| %>
+    <tr>
+      <td>
+        <%= link_to application.receive_payment_company, application, :class => "admin" %>
+      </td>
+      <td>
+        <%= application.state_I18n %>
+      </td>
+      <td><%= application.created_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= render 'application/pagination', :posts =>  @payment_applications %>
+
+<p>
+  <%= link_to I18n.t('operate.new') + I18n.t("activerecord.models.payment_application"), new_payment_application_path, :class => "utility" %>
+</p>

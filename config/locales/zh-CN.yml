@@ -1,0 +1,318 @@
+#encoding: utf-8
+zh-CN:
+  operate:
+    edit: "修改"
+    delete: "删除"
+    back: "返回"
+    show: "详情"
+    new: "新建"
+    create: "创建"
+    commit: "提交"
+    update: "确认更新"
+    details: "详细信息"
+  submit:
+    location:
+      new: "创建"
+      create: "创建"
+      edit: "确认更新"
+
+  application:
+    title: "云灵OA"
+    company_name: "办公系统"
+
+  menu:
+    daily_office: "日常办公"
+    admin_manage: "行政管理"
+    finance_manage: "财务管理"
+    sale_manage: "销售管理"
+    system_manage: "系统管理"
+    personal_setting: "个人设置"
+
+  side_bar:
+    daily_office:
+      work_log: "工作日志"
+      subordinate_work_log: "下属工作日志"
+      communicate_message_manage: "消息管理"
+      inbox: "收件箱"
+      outbox: "发件箱"
+      prompt_msg: "提示消息"
+      daily_office_routine: "工作流"
+      unprocessed_application: "待处理事项"
+    admin_affaire:
+      statistics: "统计"
+      leave_application: "请假/出差申请统计"
+      work_log: "工作日志统计"
+    finance:
+      statis: "统计"
+      expense_statis: "费用申请统计"
+      payment_statis: "付款申请统计"
+    sale:
+      statis: "统计"
+      contract_statis: "合同申请统计"
+      billing_statis: "开票申请统计"
+
+  login:
+    login_prompt: "请登录"
+    login: "登录"
+    login_success: "登录成功"
+    login_error: "登录失败-用户名/密码错误"
+    logout_prompt: "成功退出"
+    logout: "退出"
+    signup: "注册"
+
+  error:
+    permit_deny: "您的权限不够, 不能访问该功能"
+
+  # notice view
+  views_notice:
+    title: "公司通告"
+    total_notices_prompt: "通告总数"
+    publish_time_details: "发布于 %{when}"
+    publisher_details: "发布者: %{user}"
+
+  views_work_log:
+    title: "工作日志"
+    total_notices_prompt: "日志总数"
+    owner: "创建人"
+    operate: "操作"
+    logdate: "日期"
+
+  views_communicate_message:
+    total_message_prompt: "消息总数"
+    receiver: "接收者"
+    unread: "未读"
+    read:   "已读"
+
+  views_prompt_message:
+    messages: "消息"
+
+  views_leave_application:
+    total_application_prompt: "请假/出差条数"
+    receiver: "接收者"
+    title: "请假/出差单"
+    edit_real_end_at: "修改销假时间"
+
+  views_expense_application:
+    total_application_prompt: "费用申请条数"
+    receiver: "接收者"
+    title: "费用申请单"
+  views_payment_application:
+    total_application_prompt: "付款申请条数"
+    receiver: "接收者"
+    title: "付款申请单"
+  views_contract_application:
+    total_application_prompt: "合同申请条数"
+    receiver: "接收者"
+    title: "付款申请单"
+  views_billing_application:
+    total_application_prompt: "开票申请条数"
+    receiver: "接收者"
+    title: "付款申请单"
+
+
+  views_users:
+    persional_infos: "个人信息"
+    password_prompt: "请输入密码两次"
+    once: "输入密码"
+    add_roles: "添加职能"
+    add_positions: "添加职位"
+
+  views_application_receivers:
+    title: "接收到的申请"
+    total_application_receivers_prompt: "接收到的申请总数"
+    state_prompt_info: "请选择您的意见"
+#    pending: "处理中"
+#    approved: "同意"
+#    rejected: "拒绝"
+#    reason: "原因"
+
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "字段非法"
+      application:
+        create_receiver_error: "无法创建接收者"
+      models:
+        leave_application:
+          attributes:
+            reason:
+              blank: "为空"
+            start_at:
+              blank: "为空"
+            end_at:
+              blank: "为空"
+            use:
+              blank: "为空"
+        expense_application:
+          attributes:
+            reason:
+              blank: "为空"
+            sum:
+              blank: "为空"
+            use:
+              blank: "为空"
+            item_name:
+              blank: "为空"
+        communicate_message:
+          attributes:
+            content:
+              blank: "为空"
+            receiver_ids:
+              blank: "为空"
+        work_log:
+          attributes:
+            content:
+              blank: "为空"
+
+    models:
+      user: "用户"
+      notice: "通告"
+      role: "角色"
+      work_log: "工作日志"
+
+      communicate_message: "通讯消息"
+      prompt_message: "提示消息"
+      item_application: "物品申请"
+      leave_application: "请假/出差申请"
+      expense_application: "费用申请"
+      payment_application: "付款申请(对公)"
+      contract_application: "合同申请"
+      billing_application: "开票申请"
+
+    state:
+      application:
+        rejected: "拒绝"
+        approved: "同意"
+        pending: "处理中"
+
+    attributes:
+      common:
+        create_at: "创建时间"
+        state: "状态"
+      user:
+        name: "登录名"
+        password: "密码"
+        password_confirmation: "重复密码"
+        real_name: "真实姓名"
+        email: "邮箱"
+        parent_id: "上级"
+        position: "职位"
+      work_log:
+        content: "内容"
+      notice:
+        title: "标题"
+        description: "内容"
+        created_at: "发布时间"
+      position:
+        name: "职位名"
+      role:
+        name: "角色名"
+      message:
+        content: "内容"
+        sender: "发送者"
+        type: "消息类型"
+        create_at: "创建时间"
+        receiver_ids: "接收者"
+      application:
+        sender: "申请人"
+        type: "申请类型"
+        created_at: "申请时间"
+        reason: "事由"
+      leave_application:
+        use: "请假/出差类型"
+        reason: "请假/出差事由"
+        start_at: "开始时间"
+        end_at: "结束时间"
+        real_end_at: "销假时间"
+        business_travel_destination: "出差目的地"
+      expense_application:
+        use: "花销用途"
+        reason: "明细"
+        item_name: "费用名称"
+        sum: "预计花费(￥)"
+      payment_application:
+        use: "付款方式"
+        reason: "明细"
+        receive_payment_company: "收款单位"
+        sum: "付款金额"
+      contract_application:
+        contract_name: "合同名称"
+        use: "合同性质"
+        sum: "合同总额"
+        reason: "明细"
+      billing_application:
+        purchase_company: "购货单位名称"
+        use: "发票性质"
+        sum: "发票总金额"
+        reason: "开票内容"
+
+      application_receiver:
+        state: "处理状态"
+        reason: "具体原因"
+
+
+  init_data:
+    user:
+      name1: "刘清泊"
+      name2: "章灵军"
+      name3: "吴卫平"
+      name4: "夏从俊"
+      name5: "刘沛"
+      name6: "人事"
+      name7: "财务"
+      name8: "系统管理员"
+      name9: "超级管理员"
+
+    role:
+      operator: "管理员"
+      admin: "行政"
+      finance: "财务"
+      sale: "销售"
+      developer: "普通"
+
+    position:
+      staff: "普通员工"
+      manager: "主管"
+      department_manager: "部门经理"
+      vice_president: "副总裁"
+      president: "总裁"
+
+    application:
+      use:
+        other: "其他"
+    expense_application:
+      use:
+        project: "项目"
+        office: "办公"
+        business_affair: "业务招待"
+        travel: 差旅
+    leave_application:
+      use:
+        casual_leave: "事假"
+        sick_leave: "病假"
+        office_leave: "公假"
+        out_leave: "外出"
+        travel_leave: "出差"
+    payment_application:
+      use:
+        cash: "现金"
+        online_banking: "网银"
+        check: "支票"
+    contract_application:
+      use:
+        sale: "销售"
+        purchase: "采购"
+    billing_application:
+      use:
+        invoice_17percent: "17%增票"
+        invoice_6percent: "6%增票"
+
+  txt:
+    generate_prompt_info: "处理了您的关于 "
+    approved: "同意"
+    rejected: "拒绝"
+
+  will_paginate:
+    previous_label: "上一页"
+    next_label: "下一页"
+    

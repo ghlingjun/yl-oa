@@ -1,0 +1,8 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<h1>
+  <%=I18n.t("operate.new") + I18n.t("activerecord.models.work_log")%>
+</h1>
+
+<%= render 'form' %>
+<br/>
+<%= link_to 'Back', work_logs_path %>

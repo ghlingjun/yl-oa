@@ -1,0 +1,35 @@
+<%= render 'side_bar/finance_affaire_side_bar' %>
+<h1 style="margin-top:0;">
+  <%= I18n.t "activerecord.models.payment_application" %>
+</h1>
+<p class="subtitle">
+  <%= I18n.t "views_payment_application.total_application_prompt" %>:&nbsp;
+  <%= @payment_applications.size %>
+</p>
+
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.application.sender' %>
+    </th>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.payment_application.receive_payment_company' %>
+    </th>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.payment_application.sum' %>
+    </th>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.payment_application.use' %>
+    </th>
+  </tr>
+  <% @payment_applications.each do |application| %>
+    <tr>
+      <td><%= application.sender_real_name%></td>
+      <!-- <td><%= link_to application.item_name, finance_expense_application_path(application), :class => "admin"%></td> -->
+      <td><%= application.receive_payment_company %></td>
+      <td><%= application.sum%></td>
+      <td><%= application.use%></td>
+    </tr>
+  <% end %>
+</table>
+

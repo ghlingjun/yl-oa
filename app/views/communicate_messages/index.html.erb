@@ -1,0 +1,47 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+
+<h1 style="margin-top:0;">
+  <%= I18n.t 'activerecord.models.communicate_message'%>
+</h1>
+<p class="subtitle">
+  <%=  I18n.t 'views_communicate_message.total_message_prompt'%> :<%= @size %>
+</p>
+
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <th class="la" width="70%">
+      <%= I18n.t 'activerecord.attributes.message.content' %>
+    </th>
+    <% if not @send %>
+      <th width="30%"><%= I18n.t 'activerecord.attributes.message.sender' %></th>
+    <% else %>
+      <th width="30%"><%= I18n.t 'views_communicate_message.receiver' %></th>
+    <% end %>
+  </tr>
+  <% @communicate_messages.each do |message| %>
+    <tr>
+      <td><%= link_to message.content, message, :class => "admin" %></td>
+      <td class="inv lp">
+        <% if not @send%>
+          <%= message.sender_real_name %>
+        <% else %>
+          <%= truncate(get_has_many_model_list_name(message, "receivers", "real_name"), :length => 30) %>
+          <a class="details_info"><%= I18n.t 'operate.details' %></a>
+        <% end %>
+      </td>
+    </tr>
+    <%if @send %>
+    <tr style="display:none;" id="receive_info">
+      <td colspan="2" class="inv lp" >
+        <%= generate_receiver_detail_info(message) %>
+      </td>
+    </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<%= render 'application/pagination', :posts =>  @communicate_messages %>
+
+<p>
+  <%= link_to I18n.t('operate.new') + I18n.t('activerecord.models.communicate_message'), new_communicate_message_path, :class => "utility" %>
+</p>

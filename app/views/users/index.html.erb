@@ -1,0 +1,38 @@
+<%= render 'side_bar/sys_manage_sidebar' %>
+<h5><%= I18n.t 'txt.views_users.find_a_user', :default => 'Find a User' %></h5>
+
+<%= form_tag users_path, :method => 'get' do %>
+<p>
+<label><%= I18n.t 'txt.views_users.display_name_or_login', :default => 'Display name or login' %></label>
+<%= text_field_tag :q, params[:q] %>
+<%= submit_tag I18n.t('txt.views_users.search_title', :default => "Search") %></p>
+<% end %>
+
+<h1 style="margin-top:0;"><%= I18n.t 'txt.users', :default => 'Users' %></h1>
+<p class="subtitle">
+  用户个数:<%= @users.size%>
+</p>
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <th class="la" width="58%"><%= I18n.t 'txt.views_users.name_or_login', :default => 'RealName / LoginName' %></th>
+    <th  width="30%"><%= I18n.t 'txt.views_users.current_status_title', :default => "email" %></th>
+    <th><%= I18n.t 'txt.views_users.current_status_title', :default => "操作" %></th>
+  </tr>
+<% @users.each do |user|%>
+  <tr>
+    <td><%= link_to user.real_name, user, :class => "admin" %>
+      <span style="color:#666">
+        <%= I18n.t('txt.views_users.admin_in_parens', :default => "(" + user.name + ")")%>
+      </span>
+    </td>
+    <td class="ca inv"><%= user.email %></td>
+    <td class="c3" width="12%">
+      <%= link_to  '编辑', edit_user_path(user), :class => "tiny", :rel => "directory", :style => "float:right" %><br/>
+      <%= link_to '删除', user, :class => "tiny", :rel => "directory", :style => "float:right", :confirm => 'Are you sure?', :method => :delete %>
+    </td>
+
+  </tr>
+<% end %>
+</table>
+
+<p><%= link_to t('txt.new_topic', :default => '新建用户'), new_user_path, :class => "utility" %></p>

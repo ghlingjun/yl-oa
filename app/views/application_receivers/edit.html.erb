@@ -1,0 +1,50 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<h1><%= I18n.t 'views_application_receivers.title'%></h1>
+
+<%= form_for @application_receiver do |f| %>
+    <% if @application_receiver.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@application_receiver.errors.count, "error") %>
+        prohibited this user from being saved:</h2>
+      <ul>
+      <% @application_receiver.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label for="sender"><%= I18n.t 'activerecord.attributes.application.sender' %></label><br />
+    <%= @application_receiver.receive_application_sender_real_name%>
+  </div>
+
+  <div class="field">
+    <label for="type"><%=  I18n.t 'activerecord.attributes.application.type', :default => 'Type' %></label><br />
+    <%= I18n.t "activerecord.models.#{@application_receiver.receive_application.class.to_s.underscore}"%>
+  </div>
+
+
+
+  <%= render "#{@application_receiver.receive_application.class.to_s.underscore}s/detail_info", :application=>@application_receiver.receive_application %>
+
+  <div class="field">
+    <label for="state"><%=  I18n.t 'views_application_receivers.state_prompt_info', :default => 'your option' %></label><br />
+    <%= f.select(:state, state_for_select)%>
+  </div>
+
+  <div id="application_receiver_reason_field">
+      <p>
+        <label for="reason"><%=  I18n.t 'activerecord.attributes.application_receiver.reason', :default => 'reason' %></label><br />
+        <%= f.text_area :reason, :rows=>5%>
+      </p>
+  </div>
+  <div id="application_receiver_submit" class="actions">
+    <%if @application_receiver.pending?%>
+        <p><%= f.submit  I18n.t 'operate.update' %></p>
+    <%else%>
+        <p><%= link_to I18n.t('operate.back') , application_receivers_path%></p>
+    <%end%>
+  </div>
+<% end %>
+<br />

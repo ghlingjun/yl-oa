@@ -1,0 +1,6 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<h3><%= I18n.t 'operate.details' %></h3>
+
+<%= render("detail_info", :application => @leave_application) %>
+
+<%= link_to I18n.t('operate.back'), leave_applications_path %>

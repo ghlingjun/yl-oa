@@ -1,0 +1,32 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<h1 style="margin-top:0;"><%= I18n.t("views_notice.title")%></h1>
+
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <th class="la" width="70%" colspan="2"><%= I18n.t 'activerecord.models.notice', :default => 'notice' %></th>
+    <th class="la" width="30%" colspan="1"><%= I18n.t('activerecord.attributes.notice.created_at', :default => 'publish time') %></th>
+  </tr>
+  <% for notice in @notices do %>
+  <tr class="notice" id="notice_<%= notice.id %>_row">
+    <td class="c2 vat" width="50%">
+      <%= link_to notice.title, notice_path(notice), :class => "title" %>
+      <p class="desc"><%= truncate(strip_tags(notice.description),
+                 :length => 60)%></p>
+    </td>
+    <td class="c3" width="20%">
+      <%= link_to  I18n.t('operate.edit'), edit_notice_path(notice), :class => "tiny", :rel => "directory", :style => "float:right" %><br/>
+      <%= link_to  I18n.t('operate.delete'), notice, :class => "tiny", :rel => "directory", :style => "float:right", :confirm => 'Are you sure?', :method => :delete %>
+    </td>
+
+    <td class="inv lp">
+      <%= I18n.t 'views_notice.publish_time_details', :when => notice.created_at%><br />
+      <strong><%= I18n.t 'views_notice.publisher_details', :user => notice.user_real_name %></strong>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<%= render 'application/pagination', :posts =>  @notices %>
+
+<p><%= link_to I18n.t('operate.new') + I18n.t('activerecord.models.notice'), new_notice_path, :class => "utility" %></p>
+

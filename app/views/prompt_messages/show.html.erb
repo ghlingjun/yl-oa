@@ -1,0 +1,12 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+
+<h3><%= I18n.t 'views_prompt_message.messages' %></h3>
+
+<p>
+  <label for="content">
+    <%= I18n.t 'activerecord.attributes.message.content', :default => 'Content' %>
+  </label><br />
+  <%= @prompt_message.content %>
+</p>
+
+<%= link_to I18n.t('operate.back'), prompt_messages_path %>

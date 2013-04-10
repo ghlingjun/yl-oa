@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-YlOa::Application.load_tasks
+YunlingOA::Application.load_tasks

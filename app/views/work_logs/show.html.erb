@@ -1,0 +1,11 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<p>
+  <b><%= label_tag :log_date, I18n.t("views_work_log.logdate")%></b>
+  <%= @work_log.log_date.to_date %>
+</p>
+<p>
+  <b><%= label_tag :content, I18n.t("activerecord.attributes.work_log.content")%></b>
+  <%= @work_log.content %>
+</p>
+
+<%= link_to 'Back', work_logs_path %>

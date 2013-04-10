@@ -1,0 +1,23 @@
+<%= render 'side_bar/sys_manage_sidebar' %>
+<%= form_for @role do |f| %>
+  <% if @role.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@role.errors.count, "error") %>
+        prohibited this role from being saved:</h2>
+      <ul>
+      <% @role.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <p><label for="name"><%= I18n.t 'txt.login_name', :default => '角色名' %></label><br/>
+  <%= f.text_field :name %></p>
+
+  <p><%= submit_tag I18n.t('txt.sign_up', :default => '新建') %></p>
+
+<% end %>
+
+<%= link_to '返回', roles_path %>

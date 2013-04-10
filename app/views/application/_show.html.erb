@@ -1,0 +1,40 @@
+<h3><%= I18n.t 'views_communicate_message.messages' %></h3>
+
+<p>
+	<label for="title">
+		<%= I18n.t 'activerecord.attributes.application.title', :default => 'Title' %>
+	</label><br />
+	<%= application.title %>
+</p>
+
+<p>
+	<label for="content">
+		<%= I18n.t 'activerecord.attributes.application.content', :default => 'Content' %>
+	</label><br />
+	<%= application.content %>
+</p>
+
+<p>
+  <label for="receivers">
+    <%= I18n.t 'views_#{type}.receiver', :default => 'Receivers' %>
+  </label><br />
+  <%= truncate(get_has_many_model_list_name(application, "receivers", "real_name"),
+      :length => 30) %>
+</p>
+
+<p>
+  <label for="state">
+    <%= I18n.t 'activerecord.attributes.application_receiver.state', :default => 'Status' %>
+  </label><br />
+  <%application.application_receivers.each do |a_receiver|%>
+    <%= a_receiver.receiver.real_name + " : " +I18n.t("activerecord.state.application.#{a_receiver.state}")%> <br/>
+    <%if a_receiver.rejected?%>
+      <%= I18n.t("activerecord.attributes.application_receiver.reason") + " : "%><br/>
+      <div class='application_receiver_reason'>
+        <%= a_receiver.reason%>
+      </div>
+    <%end%>
+  <%end%>
+</p>
+
+<%= link_to I18n.t('operate.back'), send("#{type}s_path") %>

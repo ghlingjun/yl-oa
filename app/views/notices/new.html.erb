@@ -1,0 +1,6 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<h1><%= I18n.t("operate.new") + I18n.t("activerecord.models.notice")%></h1>
+
+<%= render 'form' ,:notice=>@notice%>
+
+<%= link_to 'Back', notices_path %>

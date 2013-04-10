@@ -1,0 +1,9 @@
+<% use_names.each do |use| %>
+  <%= f.radio_button 'use', use, :selected => true %>
+  <% if use == I18n.t('init_data.application.use.other') %>
+    <%= text_field_tag 'use', '', :size => "12", 
+    :value => I18n.t('init_data.application.use.other') %>
+  <% else %>
+    <%= use %>
+  <% end %>
+<% end %>

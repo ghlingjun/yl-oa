@@ -1,0 +1,34 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+
+<h1 style="margin-top:0;"><%= I18n.t 'views_application_receivers.title'%></h1>
+
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <!-- <th class="la" width="39%">
+      <%= I18n.t 'activerecord.attributes.application.reason' %>
+    </th> -->
+    <th width="33%"><%= I18n.t 'activerecord.attributes.application.type'%></th>
+    <th width="33%"><%= I18n.t 'activerecord.attributes.application.sender'%></th>
+    <th width="34%">
+      <%= I18n.t 'activerecord.attributes.application_receiver.state'%>
+    </th>
+  </tr>
+  <% @application_receivers.each do |application_receiver| %>
+  <tr>
+    <!-- <td>
+      <%= link_to application_receiver.receive_application_reason, edit_application_receiver_path(application_receiver), :class => "admin" %>
+    </td> -->
+    <td class="inv lp">
+      <%= link_to I18n.t("activerecord.models.#{application_receiver.receive_application.class.to_s.underscore}"), edit_application_receiver_path(application_receiver), :class => "admin" %>
+    </td>
+    <td class="inv lp">
+      <%= application_receiver.receive_application_sender_real_name %>
+    </td>
+    <td>
+      <%= I18n.t("activerecord.state.application.#{application_receiver.state}") %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<%= render 'application/pagination', :posts =>  @application_receivers %>

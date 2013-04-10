@@ -1,0 +1,56 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<%= form_for @leave_application do |f| %>
+  <% if @leave_application.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@leave_application.errors.count, "error") %>
+        &nbsp;prohibited this user from being saved:
+      </h2>
+      <ul>
+        <% @leave_application.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div><h3><%= I18n.t 'views_leave_application.title' %></h3></div>
+
+  <div><p>
+    <label for="start_at" >
+      <%= I18n.t 'activerecord.attributes.leave_application.start_at' %>
+    </label>
+    <%= f.text_field :start_at, :class => "timepicker", :size => '15' %>
+  </p></div>
+
+  <div><p>
+    <label for="end_at" >
+      <%= I18n.t 'activerecord.attributes.leave_application.end_at' %>
+    </label>
+    <%= f.text_field :end_at, :class => "timepicker", :size => '15' %>
+  </p></div>
+
+  <div><p>
+    <label for="use">
+    	<%= I18n.t 'activerecord.attributes.leave_application.use' %>
+    </label><br/>
+    <%= render 'application/use_radio', :f => f, :use_names => LeaveApplication::USE %>
+  </p></div>
+
+  <div id="business_travel_destination"><p>
+    <label for="business_travel_destination" >
+      <%= I18n.t 'activerecord.attributes.leave_application.business_travel_destination' %>
+    </label>
+    <%= f.text_field :business_travel_destination, :size => '15' %>
+  </p></div>
+
+  <div><p>
+    <label for="reason"><%= I18n.t 'activerecord.attributes.leave_application.reason'%>
+    </label><br/>
+    <%= f.text_area :reason, :size => "60x3" %>
+  </p></div>
+
+  <div><p><%= submit_tag I18n.t('operate.commit') %></p></div>
+<% end %>
+
+<%= link_to I18n.t('operate.back'), leave_applications_path %>

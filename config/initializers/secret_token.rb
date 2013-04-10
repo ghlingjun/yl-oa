@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-YlOa::Application.config.secret_token = '5cbd0e0eecebba6a804d0ebfd3f6d415fb0bc30196bc2ff4e4cc704fa9a1d09c46cd58875cc4aac851676db43625aba2669e6d22f59d8990db090e85b2bf0112'
+YunlingOA::Application.config.secret_token = '3dd7845fb4d86448f5f77179b8d25fbd28353a4d65027d4ceea0f7e57758bb3ff3490c7ba8c8cf7c7896125cf9a1973653f00469cd89c5eeb7f7e7d5991fb3b6'

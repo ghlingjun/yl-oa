@@ -1,0 +1,5 @@
+<% data = [] #CHANGES_HERE -%>
+<% for message_receiver in @message_receivers -%>
+<% data << {:receiver_name => message_receiver.receiver_real_name, :state=>message_receiver.state} -%>
+<%end -%>
+<%=raw data.to_json %>

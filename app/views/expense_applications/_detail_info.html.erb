@@ -1,0 +1,41 @@
+<div>
+<table border="1" width="100%">
+  <tr>
+    <td width="20%" class="la">
+      <label>
+        <%= I18n.t 'activerecord.attributes.expense_application.item_name' %>
+      </label>
+    </td>
+    <td width="80%" class="la"><%= application.item_name %></td>
+  </tr>
+
+  <tr>
+    <td>
+      <label>
+        <%= I18n.t 'activerecord.attributes.expense_application.use' %>
+      </label>
+    </td>
+    <td><%= application.use %></td>
+  </tr>
+
+  <tr>
+    <td>
+      <label>
+        <%= I18n.t 'activerecord.attributes.expense_application.sum' %>
+      </label>
+    </td>
+    <td><%= application.sum %></td>
+  </tr>
+
+  <tr>
+    <td>
+      <label>
+        <%= I18n.t 'activerecord.attributes.expense_application.reason' %>
+      </label>
+    </td>
+    <td><%= application.reason %></td>
+  </tr>
+
+  <%= render("application/detail_state_info", :application => application) %>
+</table>
+</div>

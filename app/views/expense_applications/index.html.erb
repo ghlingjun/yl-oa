@@ -1,0 +1,40 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+
+<h1 style="margin-top:0;">
+  <%= I18n.t "activerecord.models.expense_application" %>
+</h1>
+<p class="subtitle">
+  <%= I18n.t "views_expense_application.total_application_prompt" %>:&nbsp;
+  <%= @size %>
+</p>
+
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <th width="55%" class="la">
+      <%= I18n.t 'activerecord.attributes.expense_application.item_name' %>
+    </th>
+    <th width="15%" class="la">
+      <%= I18n.t 'activerecord.attributes.common.state' %>
+    </th>
+    <th width="30%" class ="la">
+      <%= I18n.t 'activerecord.attributes.application.created_at' %>
+    </th>
+  </tr>
+  <% @expense_applications.each do |application| %>
+    <tr>
+      <td>
+        <%= link_to application.item_name, application, :class => "admin" %>
+      </td>
+      <td>
+        <%= application.state_I18n %>
+      </td>
+      <td><%= application.created_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= render 'application/pagination', :posts =>  @expense_applications %>
+
+<p>
+  <%= link_to I18n.t('operate.new') + I18n.t("activerecord.models.expense_application"), new_expense_application_path, :class => "utility" %>
+</p>

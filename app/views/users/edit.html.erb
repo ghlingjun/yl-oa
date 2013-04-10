@@ -1,0 +1,7 @@
+<%= render 'side_bar/sys_manage_sidebar' %>
+<h3><%= I18n.t 'views_users.persional_infos' %></h3>
+
+<%= render 'form', :user=>@user%>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>

@@ -1,0 +1,9 @@
+<% content_for :right do %>
+  <h5 style="margin-bottom:1.0em;">
+    <%= I18n.t 'side_bar.finance.statis' %>
+  </h5>
+  <ul class="flat" style="margin-top:1em;">
+    <li><%= link_to I18n.t('side_bar.finance.expense_statis'), finance_expense_applications_path %> </li>
+    <li><%= link_to I18n.t('side_bar.finance.payment_statis'), finance_payment_applications_path %></li>
+  </ul>
+<% end %>

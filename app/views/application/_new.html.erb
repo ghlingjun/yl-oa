@@ -1,0 +1,29 @@
+<%= form_for application do |f| %>
+  <% if application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(application.errors.count, "error") %>
+        prohibited this user from being saved:</h2>
+      <ul>
+      <% application.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <p>
+      <label for="title"><%= I18n.t 'activerecord.attributes.application.title', :default => 'title' %></label></p>
+    <p>
+      <%= f.text_field :title %>
+    </p>
+
+  <p>
+    <label for="content"><%= I18n.t 'activerecord.attributes.application.content'%>
+    </label><br/>
+    <%= f.text_area :content %>
+  </p>
+
+  <p><%= submit_tag I18n.t('operate.create') %></p>
+<% end %>
+<%= link_to I18n.t('operate.back'), send("#{type}s_path") %>

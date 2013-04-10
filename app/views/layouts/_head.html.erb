@@ -1,0 +1,28 @@
+<ul id="nav">
+  <li><%= link_to I18n.t('menu.daily_office'), root_path, :rel => 'home' %></li>
+  <li>
+    <%= link_to I18n.t('menu.admin_manage'), admin_leave_applications_path, :rel => 'home'%>
+  </li>
+  <li>
+    <%= link_to I18n.t('menu.finance_manage'), finance_expense_applications_path, :rel => 'home' %>
+  </li>
+  <li><%= link_to I18n.t('menu.sale_manage'), sale_contract_applications_path, :rel => 'home'%></li>
+  <li><%= link_to I18n.t('menu.system_manage'), users_path, :rel => 'home' %></li>
+
+  <% if logged_in? %>
+    <li class="login">
+      <%=  link_to current_user.real_name, user_path(current_user) %>
+    </li>
+    <li class="logout">
+      <%= link_to I18n.t("menu.personal_setting"), settings_path %>
+    </li>
+    <li class="logout">
+      <%= link_to I18n.t('login.logout'), logout_path() %>
+    </li>
+  <% else %>
+    <li><%= link_to I18n.t("login.signup"), signup_path() %></li>
+    <li><%= link_to I18n.t('login.login'), login_path() %></li>
+  <% end %>
+</ul>
+
+<h1><%= I18n.t "application.company_name"%></h1>

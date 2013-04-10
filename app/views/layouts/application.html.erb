@@ -1,14 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>YlOa</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title><%= I18n.t('application.title') %></title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tag %> 
+  </head>
+  <body>
+    <div id="header">
+      <%= render "layouts/head" %>
+    </div>
 
-<%= yield %>
+    <div id="container">
+      <div id="content">
+        <%= flash_messages %>
+        <%= yield %>
+      </div>
 
-</body>
+      <div id="right">
+        <%= yield(:right) %>
+      </div>
+
+      <br style="clear:both;" />
+    </div>
+
+    <div id="footer">
+      <%= render "layouts/footer" %>
+      <br style="clear:both;" />
+    </div>
+  </body>
 </html>
+

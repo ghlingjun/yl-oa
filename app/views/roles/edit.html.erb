@@ -1,0 +1,24 @@
+<%= render 'side_bar/sys_manage_sidebar' %>
+<h1>角色设置</h1>
+
+<%= form_for @role do |f| %>
+    <% if @role.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@role.errors.count, "error") %>
+        prohibited this role from being saved:</h2>
+      <ul>
+      <% @role.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render "settings", :object => f %>
+  <p><%= submit_tag  '更新设置' %></p>
+<% end %>
+<br />
+
+
+<%= link_to 'Show', @role %> |
+<%= link_to 'Back', roles_path %>

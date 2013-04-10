@@ -1,0 +1,6 @@
+<%= render 'side_bar/sys_manage_sidebar' %>
+<h3><%= I18n.t 'views_users.persional_infos' %></h3>
+
+<%= render 'form', :user=>@user%>
+
+<%= link_to '返回', users_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyString
+  sender: 1
+  type: 
+  state: MyString
+  sum: 1
+
+two:
+  content: MyString
+  sender: 1
+  type: 
+  state: MyString
+  sum: 1

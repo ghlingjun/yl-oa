@@ -1,0 +1,23 @@
+<%= render 'side_bar/sys_manage_sidebar' %>
+
+<h1 style="margin-top:0;"><%= I18n.t 'txt.roles', :default => 'roles' %></h1>
+<p class="subtitle">
+  角色个数:<%= @roles.size%>
+</p>
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <th class="la" width="88%"><%= I18n.t 'txt.views_roles.name_or_login', :default => '角色名' %></th>
+    <th><%= I18n.t 'txt.views_roles.current_status_title', :default => "操作" %></th>
+  </tr>
+<% @roles.each do |role|%>
+  <tr>
+    <td><%=role.name%></td>
+    <td class="c3" width="12%">
+      <%= link_to  '编辑', edit_role_path(role), :class => "tiny", :rel => "directory", :style => "float:right" %><br/>
+      <%= link_to '删除', role, :class => "tiny", :rel => "directory", :style => "float:right", :confirm => 'Are you sure?', :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<p><%= link_to t('txt.new_topic', :default => '新建角色'), new_role_path, :class => "utility" %></p>

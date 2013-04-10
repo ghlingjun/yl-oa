@@ -1,0 +1,12 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<p>
+  <b><%= @notice.title %></b>
+</p>
+
+<p>
+  <%= @notice.description %>
+</p>
+
+
+<%= link_to I18n.t('operate.edit'), edit_notice_path(@notice) %> |
+<%= link_to I18n.t('operate.back'), notices_path %>

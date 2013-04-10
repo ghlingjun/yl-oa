@@ -1,0 +1,2 @@
+class ItemApplication < Application
+end

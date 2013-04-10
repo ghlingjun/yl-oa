@@ -1,0 +1,42 @@
+<h1 style="margin-top:0;"><%= I18n.t "activerecord.models.#{type}"%></h1>
+<p class="subtitle">
+  <%= I18n.t "views_#{type}.total_application_prompt" %>:&nbsp;
+  <%= applications.size%>
+</p>
+
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <th width="10%" class="la">
+      <%= I18n.t 'activerecord.attributes.application.title' %>
+    </th>
+    <th width="50%" class="la">
+      <%= I18n.t 'activerecord.attributes.application.content' %>
+    </th>
+    <th width="25%" class="la">
+      <%= I18n.t 'views_leave_application.receiver' %>
+    </th>
+    <th width="15%" class="la">
+      <%= I18n.t 'activerecord.attributes.message.state' %>
+    </th>
+  </tr>
+  <% applications.each do |application|%>
+    <tr>
+      <td><%= application.title%></td>
+      <td>
+        <%= link_to application.content, application,
+        :class => "admin" %>
+      </td>
+      <td class="inv lp">
+        <%= truncate(get_has_many_model_list_name(application,
+        "receivers", "real_name"), :length => 30) %>
+      </td>
+      <td>
+        <%= application.state_I18n%>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+  <%= link_to I18n.t('operate.new') + I18n.t("activerecord.models.#{type}"), send("new_#{type}_path"), :class => "utility" %>
+</p>

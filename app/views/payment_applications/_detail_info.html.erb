@@ -1,0 +1,41 @@
+<div>
+<table border="1" width="100%">
+  <tr>
+    <td width="20%" class="la">
+      <label>
+        <%= I18n.t 'activerecord.attributes.payment_application.receive_payment_company' %>
+      </label>
+    </td>
+    <td width="80%" class="la"><%= application.receive_payment_company %></td>
+  </tr>
+
+  <tr>
+    <td>
+      <label>
+        <%= I18n.t 'activerecord.attributes.payment_application.use' %>
+      </label>
+    </td>
+    <td><%= application.use %></td>
+  </tr>
+
+  <tr>
+    <td>
+      <label>
+        <%= I18n.t 'activerecord.attributes.payment_application.sum' %>
+      </label>
+    </td>
+    <td><%= application.sum %></td>
+  </tr>
+
+  <tr>
+    <td>
+      <label>
+        <%= I18n.t 'activerecord.attributes.payment_application.reason' %>
+      </label>
+    </td>
+    <td><%= application.reason %></td>
+  </tr>
+
+  <%= render("application/detail_state_info", :application => application) %>
+</table>
+</div>

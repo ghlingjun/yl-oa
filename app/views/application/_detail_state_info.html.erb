@@ -1,0 +1,21 @@
+<tr>
+  <td>
+    <label for="state">
+      <%= I18n.t 'activerecord.attributes.application_receiver.state', :default => 'Status' %>
+    </label>
+  </td>
+  <td colspan="3">
+    <%= application.state_I18n %>
+    <div class="application_receiver_detail_state">
+    <% application.application_receivers.each do |a_receiver| %>
+      <%= a_receiver.receiver.real_name + " : " +I18n.t("activerecord.state.application.#{a_receiver.state}") %> <br/>
+      <% if a_receiver.rejected? %>
+        <div class='application_receiver_reason'>
+          <%= I18n.t("activerecord.attributes.application_receiver.reason") + " : " %>
+          <%= a_receiver.reason %>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+  </td>
+</tr>

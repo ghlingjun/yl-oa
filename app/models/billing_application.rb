@@ -9,4 +9,6 @@ class BillingApplication < Application
     I18n.t("init_data.billing_application.use.invoice_6percent"),
     I18n.t("init_data.application.use.other")
   ]
+
+  scope :pending_finance_opinion, lambda{where("finance_opinion is null and state= 'approved'")}
 end

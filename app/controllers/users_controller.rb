@@ -60,7 +60,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
-    convert_to_parent_id_from_real_name()
+    convert_to_parent_id_from_real_name_if_necessary()
     @user = User.new(params[:user])
     respond_to do |format|
       if @user.save
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    convert_to_parent_id_from_real_name()
+    convert_to_parent_id_from_real_name_if_necessary()
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to(user_path(@user),
@@ -122,7 +122,8 @@ class UsersController < ApplicationController
               :notice=>I18n.t("error.permit_deny")
     end
 
-    def convert_to_parent_id_from_real_name
+    def convert_to_parent_id_from_real_name_if_necessary
+      return if not params[:user].has_key?(:parent_id)
       if u = User.find_by_real_name(params[:user][:parent_id])
         params[:user][:parent_id] = u.id
       else

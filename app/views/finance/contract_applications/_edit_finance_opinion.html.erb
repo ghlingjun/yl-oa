@@ -1,0 +1,6 @@
+<div class='field' title='<%=  I18n.t 'views_finance_contract.choose_your_opinion'%>'>
+  <%= form_for @contract_application, :url=>finance_contract_application_path(@contract_application) ,:method=>:PUT do |f| %>
+    <%= f.select(:finance_opinion, finance_opinion_for_select)%>
+    <p><%= f.submit  I18n.t 'operate.update' %></p>
+  <%end%>
+</div>

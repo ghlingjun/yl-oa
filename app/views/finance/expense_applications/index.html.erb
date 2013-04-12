@@ -9,7 +9,7 @@
 
 <table border="0" cellspacing="0" cellpadding="0" class="wide notices">
   <tr>
-    <th width="20%" class="la">
+    <th width="15%" class="la">
       <%= I18n.t 'activerecord.attributes.application.sender' %>
     </th>
     <th width="20%" class="la">
@@ -18,18 +18,33 @@
     <th width="20%" class="la">
       <%= I18n.t 'activerecord.attributes.expense_application.sum' %>
     </th>
-    <th width="20%" class="la">
+    <th width="15%" class="la">
       <%= I18n.t 'activerecord.attributes.expense_application.use' %>
+    </th>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.application.created_at' %>
+    </th>
+    <th width="10" class="la">
+      <%= I18n.t 'activerecord.attributes.expense_application.finance_opinion'%>
     </th>
   </tr>
   <% @expense_applications.each do |application| %>
     <tr>
       <td><%= application.sender_real_name%></td>
-      <!-- <td><%= link_to application.item_name, finance_expense_application_path(application), :class => "admin"%></td> -->
-      <td><%= application.item_name %></td>
+      <td><%= link_to application.item_name, finance_expense_application_path(application), :class => mark_if_necessary(application)%></td>
       <td><%= application.sum%></td>
       <td><%= application.use%></td>
+      <td><%= application.created_at%></td>
+      <td>
+        <%if finance_opinion_pending?(application)%>
+            <%= link_to(I18n.t("views_finance_expense.finance_opinion_info"),
+                        edit_finance_expense_application_path(application), :remote => true)%>
+        <%else%>
+            <%= Application::FINANCE_OPINION[application.finance_opinion.to_sym]%>
+        <%end%>
+      </td>
     </tr>
   <% end %>
 </table>
+<%= render 'application/pagination', :posts =>  @payment_applications %>
 

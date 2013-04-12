@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  real_user_name: MyString
+  start_at_date: 2012-09-27
+  end_at_date: 2012-09-27
+  reason: MyText
+  start_km_num: 
+  end_km_num: 
+
+two:
+  real_user_name: MyString
+  start_at_date: 2012-09-27
+  end_at_date: 2012-09-27
+  reason: MyText
+  start_km_num: 
+  end_km_num: 

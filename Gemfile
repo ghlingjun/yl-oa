@@ -8,7 +8,7 @@ gem 'rails', '3.2.3'
 gem 'sqlite3', :group => [:development, :test]
 group :production do
   gem 'thin'
-  gem 'pg'
+#  gem 'pg'
 end
 
 gem 'thin'
@@ -23,6 +23,7 @@ group :assets do
   # gem 'therubyracer', :platform => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-ui-rails'
 end
 
 gem 'jquery-rails'
@@ -51,4 +52,5 @@ gem "rails_best_practices"
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem 'will_paginate', '~> 3.0'
+gem 'paperclip', '~> 3.0'
 

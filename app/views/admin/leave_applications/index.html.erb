@@ -27,17 +27,13 @@
   </tr>
   <% @leave_applications.each do |application| %>
     <tr>
-      <td><%= application.sender_real_name %></td>
-      <td><%= application.start_at %></td>
+      <td><%= link_to(application.sender_real_name, admin_leave_application_path(application), :class => "admin")%></td>
+      <td><%= l(Time.parse(application.start_at), :format => :long) %></td>
       <td>
-        <%if application.real_end_at?%>
-            <%= application.real_end_at %>
-        <%else%>
-            <%= application.end_at %>
-        <%end%>
+        <%= application.real_end_at? ? l(Time.parse(application.real_end_at), :format => :long) : l(Time.parse(application.end_at), :format => :long) %>
       </td>
       <td><%= application.use %></td>
-      <td><%= application.created_at %></td>
+      <td><%= l(application.created_at, :format => :long)  %></td>
     </tr>
   <% end %>
 </table>

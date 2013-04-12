@@ -1,6 +1,6 @@
 class Sale::ContractApplicationsController < Sale::BaseController
   def index
-    @contract_applications = ContractApplication.where("state='approved'")
+    @contract_applications = ContractApplication.where("state='approved'").paginate(:page => params[:page]).order('id DESC')
   end
 
   def show

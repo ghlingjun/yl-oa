@@ -1,5 +1,5 @@
 <%= render 'side_bar/daily_office_side_bar' %>
-<%= form_for @payment_application do |f| %>
+<%= form_for @payment_application, :html => { :multipart => true } do |f| %>
   <% if @payment_application.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@payment_application.errors.count, "error") %>
@@ -42,6 +42,10 @@
     <label for="reason"><%= I18n.t 'activerecord.attributes.payment_application.reason'%>
     </label><br/>
     <%= f.text_area :reason, :size => "60x3" %>
+  </p>
+  <p>
+    <label for="reason"><%= I18n.t 'activerecord.attributes.application.attachment_file'%></label><br/>
+    <%= f.file_field :attachment_file%>
   </p>
 
   <p><%= submit_tag I18n.t('operate.commit') %></p>

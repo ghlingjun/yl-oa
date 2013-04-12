@@ -1,0 +1,6 @@
+<div class='field' title='<%=  I18n.t 'views_finance_billing.choose_your_opinion'%>'>
+  <%= form_for @billing_application, :url=>finance_billing_application_path(@billing_application) ,:method=>:PUT do |f| %>
+    <%= f.select(:finance_opinion, finance_opinion_for_select)%>
+    <p><%= f.submit  I18n.t 'operate.update' %></p>
+  <%end%>
+</div>

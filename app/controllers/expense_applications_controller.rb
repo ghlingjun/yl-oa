@@ -46,4 +46,14 @@ class ExpenseApplicationsController < ApplicationController
     end
   end
 
+  def destroy
+    @expense_application = ExpenseApplication.find(params[:id])
+    @expense_application.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(expense_applications_url, :notice=>"expense_application was successfully deleted.") }
+      format.xml  { head :ok }
+    end
+  end
+
 end

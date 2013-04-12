@@ -24,6 +24,7 @@
     <tr>
       <td>
         <%= link_to application.contract_name, application, :class => "admin" %>
+        <%= link_to  I18n.t('operate.delete'), application, :class => "tiny", :rel => "directory", :style => "float:right", :confirm => 'Are you sure?', :method => :delete %>
       </td>
       <td>
         <%= application.state_I18n %>

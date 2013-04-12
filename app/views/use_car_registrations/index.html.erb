@@ -1,0 +1,31 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<h1 style="margin-top:0;"><%= I18n.t("views_use_car_registration.title")%></h1>
+
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <th class="la" width="20%"><%= I18n.t 'views_use_car_registration.real_user_name'%></th>
+    <th class="la" width="20%"><%= I18n.t('views_use_car_registration.start_at_date') %></th>
+    <th class="la" width="20%"><%= I18n.t('views_use_car_registration.end_at_date') %></th>
+    <th class="la" width="20%"><%= I18n.t('views_use_car_registration.start_km_num') %></th>
+    <th class="la" width="20%"><%= I18n.t('views_use_car_registration.end_km_num') %></th>
+  </tr>
+
+  <% @use_car_registrations.each do |use_car_registration| %>
+    <tr>
+      <td>
+        <%= link_to use_car_registration.real_user_name, use_car_registration_path(use_car_registration), :class => "admin" %>
+      </td>
+
+      <td><%= use_car_registration.start_at_date %></td>
+      <td><%= use_car_registration.end_at_date %></td>
+      <td><%= use_car_registration.start_km_num%></td>
+      <td><%= use_car_registration.end_km_num%></td>
+    </tr>
+  <% end %>
+</table>
+</table>
+
+<%= render 'application/pagination', :posts =>  @use_car_registrations %>
+
+<p><%= link_to I18n.t('operate.new') + I18n.t('activerecord.models.use_car_registration'), new_use_car_registration_path, :class => "utility" %></p>
+

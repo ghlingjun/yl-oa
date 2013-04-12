@@ -29,7 +29,7 @@
   </label><br />
   <% Role.all.each do |role| %>
   	<% if @user.roles.include?(role) %>
-    	<label><%= role.name %></label>
+    	<%= role.name %>
     <% end %>
   <%end%>
 </p>

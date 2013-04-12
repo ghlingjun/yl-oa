@@ -1,3 +1,17 @@
+<%content_for :javascript_epilogue do%>
+    $('#project_name').hide();
+    $("input:[name=expense_application[use]]:radio").change(
+        function(){
+            var $select_var =  $("input:[name=expense_application[use]]:radio:checked").val();
+            if($select_var == "项目"){
+                $('#project_name').show();
+            }else{
+                $('#project_name').hide();
+            }
+        }
+    );
+<%end%>
+
 <%= render 'side_bar/daily_office_side_bar' %>
 <%= form_for @expense_application do |f| %>
   <% if @expense_application.errors.any? %>
@@ -24,11 +38,26 @@
   </p>
 
   <p>
+    <label for="expense_type">
+      <%= I18n.t 'activerecord.attributes.expense_application.expense_type'%>
+    </label><br/>
+    <%= f.select(:expense_type, state_for_select, {:include_blank => I18n.t('operate.select')})%>
+  </p>
+
+  <p>
     <label for="use">
     	<%= I18n.t 'activerecord.attributes.expense_application.use'%>
     </label>
     <br />
     <%= render 'application/use_radio', :f => f, :use_names => ExpenseApplication::USE%>
+  </p>
+
+  <p id="project_name">
+    <label for="project_name">
+        <%= I18n.t 'activerecord.attributes.expense_application.project_name'%>
+    </label>
+    <br />
+    <%= f.text_field :project_name, :size => "60" %>
   </p>
 
   <p>
@@ -48,3 +77,4 @@
 <% end %>
 
 <%= link_to I18n.t('operate.back'), expense_applications_path %>
+

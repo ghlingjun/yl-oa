@@ -1,0 +1,6 @@
+<%= render 'side_bar/admin_affaire_side_bar' %>
+<h3><%= I18n.t 'views_use_car_registration.title' %></h3>
+
+<%= render 'use_car_registrations/detail_info', :use_car_registration=>@use_car_registration %>
+
+<%= link_to I18n.t('operate.back'), admin_use_car_registrations_path %>

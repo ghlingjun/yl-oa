@@ -1,14 +1,15 @@
 class Admin::WorkLogsController < Admin::BaseController
 
   def index
-    @work_logs = WorkLog.all
+    unless params[:q].nil?
+      return @work_logs = User.find_by_real_name(params[:real_name]).work_logs.
+          filter_by_month(params[:q].to_date).paginate(:page => params[:page]).order('id DESC')
+    end
+    @work_logs = User.find_by_real_name(params[:real_name]).work_logs.paginate(:page => params[:page]).order('id DESC')
   end
 
-  def show
-  	@work_log = WorkLog.find(params[:id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @work_log }
-    end
+  def statistics
+    @statistics = WorkLog.statistics_by_user(params[:user_name], params[:filter_date].nil? ? nil : params[:filter_date].to_date)
   end
+
 end

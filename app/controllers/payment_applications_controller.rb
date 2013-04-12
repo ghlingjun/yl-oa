@@ -46,4 +46,14 @@ class PaymentApplicationsController < ApplicationController
     end
   end
 
+  def destroy
+    @payment_application = PaymentApplication.find(params[:id])
+    @payment_application.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(payment_applications_url, :notice=>"payment_application was successfully deleted.") }
+      format.xml  { head :ok }
+    end
+  end
+
 end

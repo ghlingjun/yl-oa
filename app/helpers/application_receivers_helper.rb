@@ -1,5 +1,5 @@
 module ApplicationReceiversHelper
-  def state_for_select
+  def select_state
     result = []
     result << [I18n.t('activerecord.state.application.pending'), 'pending']
     result << [I18n.t('activerecord.state.application.approved'), 'approved']

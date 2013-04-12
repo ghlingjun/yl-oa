@@ -1,3 +1,28 @@
+<%content_for :javascript_epilogue do%>
+    var application_option = $('#application_receiver_state option:selected').val();
+
+    if(application_option == "rejected" || application_option == "approved"){
+        $('#application_receiver_state').attr("disabled", "disabled");
+        $('#application_receiver_reason_field textarea').attr("disabled", "disabled");
+    }else if(application_option == "pending"){
+        $('#application_receiver_submit').hide();
+    }
+
+    $('#application_receiver_state').change(function(){
+        $("select option:selected").each(function(){
+            if($(this).val() == "approved"){
+                $('#application_receiver_reason_field textarea').val("");
+                $('#application_receiver_submit').show();
+            }else if($(this).val() == "rejected"){
+                $('#application_receiver_reason_field textarea').show();
+                $('#application_receiver_submit').show();
+            }else if($(this).val() == "pending"){
+                $('#application_receiver_submit').hide();
+            }
+        })
+    });
+
+ <%end%>
 <%= render 'side_bar/daily_office_side_bar' %>
 <h1><%= I18n.t 'views_application_receivers.title'%></h1>
 
@@ -30,7 +55,7 @@
 
   <div class="field">
     <label for="state"><%=  I18n.t 'views_application_receivers.state_prompt_info', :default => 'your option' %></label><br />
-    <%= f.select(:state, state_for_select)%>
+    <%= f.select(:state, select_state)%>
   </div>
 
   <div id="application_receiver_reason_field">

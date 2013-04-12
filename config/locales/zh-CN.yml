@@ -1,5 +1,13 @@
 #encoding: utf-8
 zh-CN:
+
+  time:
+    formats:
+      mmddhhss: "%b %e at %l:%M%p"
+      default: "%Y-%m-%d"
+      short: "%m月%d日"
+      long: "%Y年%m月%d日 %H:%M"
+
   operate:
     edit: "修改"
     delete: "删除"
@@ -10,6 +18,11 @@ zh-CN:
     commit: "提交"
     update: "确认更新"
     details: "详细信息"
+    download: "下载"
+    select: "请选择"
+    query: "查询"
+    reset: "清空"
+
   submit:
     location:
       new: "创建"
@@ -40,8 +53,12 @@ zh-CN:
       unprocessed_application: "待处理事项"
     admin_affaire:
       statistics: "统计"
-      leave_application: "请假/出差申请统计"
+      leave_application: "请假申请统计"
+      business_trip_application: "外出/出差申请统计"
+      use_car_registration: "用车登记统计"
+      work_log_mgr: "工作日志管理"
       work_log: "工作日志统计"
+      work_log_query: "查询工作日志"
     finance:
       statis: "统计"
       expense_statis: "费用申请统计"
@@ -75,7 +92,13 @@ zh-CN:
     total_notices_prompt: "日志总数"
     owner: "创建人"
     operate: "操作"
-    logdate: "日期"
+    logdate: "日志日期"
+    remote_ip: "远程IP地址"
+    select_find_date: "请选择查阅月份"
+    select_statistics_date: "请选择统计月份"
+    select_statistics_user_name: "请选输入查询姓名"
+    work_log_statistics: "工作日志统计"
+    total_num: "总条数"
 
   views_communicate_message:
     total_message_prompt: "消息总数"
@@ -87,10 +110,16 @@ zh-CN:
     messages: "消息"
 
   views_leave_application:
-    total_application_prompt: "请假/出差条数"
+    total_application_prompt: "请假条数"
     receiver: "接收者"
-    title: "请假/出差单"
+    title: "请假单"
     edit_real_end_at: "修改销假时间"
+  views_business_trip_application:
+    total_business_trip_prompt: "外出/出差条数"
+    receiver: "接收者"
+    title: "请假单"
+    edit_real_end_at: "修改销假时间"
+
 
   views_expense_application:
     total_application_prompt: "费用申请条数"
@@ -103,7 +132,7 @@ zh-CN:
   views_contract_application:
     total_application_prompt: "合同申请条数"
     receiver: "接收者"
-    title: "付款申请单"
+    title: "合同申请单"
   views_billing_application:
     total_application_prompt: "开票申请条数"
     receiver: "接收者"
@@ -125,6 +154,25 @@ zh-CN:
 #    approved: "同意"
 #    rejected: "拒绝"
 #    reason: "原因"
+  views_finance_expense:
+    finance_opinion_info: "处理"
+    choose_your_opinion: "请选择是否付费"
+  views_finance_billing:
+    choose_your_opinion: "请选择是否开具"
+  views_finance_contract:
+    choose_your_opinion: "请选择是否定立"
+
+  views_use_car_registration:
+    title: "用车登记"
+    user_name: "登记人"
+    real_user_name: "实际使用人"
+    start_at_date: "用车日期"
+    end_at_date: "归还日期"
+    reason: "用户原由"
+    start_km_num: "开始公里数"
+    end_km_num: "结束公里数"
+
+
 
   activerecord:
     errors:
@@ -173,7 +221,9 @@ zh-CN:
       communicate_message: "通讯消息"
       prompt_message: "提示消息"
       item_application: "物品申请"
-      leave_application: "请假/出差申请"
+      leave_application: "请假申请"
+      use_car_registration: "用车登记"
+      business_trip_application: "外出/出差登记"
       expense_application: "费用申请"
       payment_application: "付款申请(对公)"
       contract_application: "合同申请"
@@ -218,33 +268,43 @@ zh-CN:
         type: "申请类型"
         created_at: "申请时间"
         reason: "事由"
+        attachment_file: "附件文件"
       leave_application:
-        use: "请假/出差类型"
-        reason: "请假/出差事由"
+        use: "请假类型"
+        reason: "请假事由"
         start_at: "开始时间"
         end_at: "结束时间"
         real_end_at: "销假时间"
-        business_travel_destination: "出差目的地"
+      business_trip_application:
+        use: "外出/出差类型"
+        reason: "外出/出差事由"
+        business_travel_destination: "地点"
       expense_application:
         use: "花销用途"
+        project_name: "项目名称"
         reason: "明细"
         item_name: "费用名称"
+        expense_type: "类型"
+        finance_opinion: "是否付费"
         sum: "预计花费(￥)"
       payment_application:
         use: "付款方式"
-        reason: "明细"
+        reason: "说明"
         receive_payment_company: "收款单位"
         sum: "付款金额"
+        finance_opinion: "是否付费"
       contract_application:
         contract_name: "合同名称"
         use: "合同性质"
         sum: "合同总额"
-        reason: "明细"
+        reason: "说明"
+        finance_opinion: "是否定立"
       billing_application:
         purchase_company: "购货单位名称"
         use: "发票性质"
         sum: "发票总金额"
         reason: "开票内容"
+        finance_opinion: "是否开具"
 
       application_receiver:
         state: "处理状态"
@@ -285,14 +345,24 @@ zh-CN:
         project: "项目"
         office: "办公"
         business_affair: "业务招待"
-        travel: 差旅
+        travel: "差旅"
+      expense_type:
+        reimbursement: "报销"
+        loan: "借款"
+      finance_opinion:
+        pending: "未处理"
+        approved: "是"
+        rejected: "否"
     leave_application:
       use:
         casual_leave: "事假"
         sick_leave: "病假"
         office_leave: "公假"
+    business_trip_application:
+      use:
         out_leave: "外出"
         travel_leave: "出差"
+        bussiness_out: "外派"
     payment_application:
       use:
         cash: "现金"

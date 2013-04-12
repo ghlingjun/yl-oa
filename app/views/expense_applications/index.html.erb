@@ -1,3 +1,17 @@
+<%content_for :javascript_epilogue do%>
+    $('#business_travel_destination').hide();
+    $("input:[name=leave_application[use]]:radio").change(
+        function(){
+            var $select_var =  $("input:[name=leave_application[use]]:radio:checked").val();
+            if($select_var == "出差"){
+                $('#business_travel_destination').show();
+            }else{
+                $('#business_travel_destination').hide();
+            }
+        }
+    );
+<%end%>
+
 <%= render 'side_bar/daily_office_side_bar' %>
 
 <h1 style="margin-top:0;">
@@ -24,6 +38,7 @@
     <tr>
       <td>
         <%= link_to application.item_name, application, :class => "admin" %>
+        <%= link_to  I18n.t('operate.delete'), application, :class => "tiny", :rel => "directory", :style => "float:right", :confirm => 'Are you sure?', :method => :delete %>
       </td>
       <td>
         <%= application.state_I18n %>

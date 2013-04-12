@@ -1,13 +1,6 @@
-<%= render 'side_bar/daily_office_side_bar' %>
-<h3><%= I18n.t 'activerecord.attributes.application.title' %></h3>
+<%= render 'side_bar/sale_affaire_side_bar' %>
+<h3><%= I18n.t 'views_billing_application.title' %></h3>
 
-<p>
-  <label><%= I18n.t 'activerecord.attributes.application.sender' %></label><br />
-  <%= @payment_application.sender_real_name %>
-</p>
+<%= render 'billing_applications/detail_info', :application=>@billing_application %>
 
-
-
-<%= render("payment_applications/detail_info", :payment_application=>@payment_application)%>
-
-<%= link_to I18n.t('operate.back'), finance_payment_applications_path %>
+<%= link_to I18n.t('operate.back'), sale_billing_applications_path %>

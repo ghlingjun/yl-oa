@@ -45,4 +45,14 @@ class BillingApplicationsController < ApplicationController
       format.xml  { render :xml => @billing_application }
     end
   end
+
+  def destroy
+    @billing_application = BillingApplication.find(params[:id])
+    @billing_application.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(billing_applications_url, :notice=>"billing_application was successfully deleted.") }
+      format.xml  { head :ok }
+    end
+  end
 end

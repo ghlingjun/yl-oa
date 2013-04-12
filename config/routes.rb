@@ -10,6 +10,8 @@ YunlingOA::Application.routes.draw do
 
   resources :leave_applications
 
+  resources :business_trip_applications
+
   resources :item_applications
 
   resources :expense_applications
@@ -24,6 +26,8 @@ YunlingOA::Application.routes.draw do
 
   resources :users
 
+  resources :use_car_registrations
+
   resource  :session
 
   match '/signup' => 'users#new', :as => 'signup'
@@ -31,14 +35,21 @@ YunlingOA::Application.routes.draw do
   match '/login' => 'sessions#new', :as => 'login'
   match '/logout' => 'sessions#destroy', :as => 'logout'
 
+  match 'application/:id/download/'  => 'application#download', :as => 'download_application'
+
   namespace :admin do
     resources :leave_applications
     resources :work_logs
+    resources :business_trip_applications
+    resources :use_car_registrations
+    match 'statistics'      => 'work_logs#statistics',     :as => :statistics
   end
 
   namespace :finance do
     resources :expense_applications
     resources :payment_applications
+    resources :contract_applications
+    resources :billing_applications
   end
 
   namespace :sale do

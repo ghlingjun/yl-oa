@@ -1,0 +1,55 @@
+<div>
+<table border="1" width="100%">
+  <tr>
+    <td width="20%" class="la">
+      <label>
+        <%= I18n.t 'activerecord.attributes.leave_application.start_at' %>
+      </label>
+    </td>
+    <td width="30%" class="la"><%= l(Time.parse(application.start_at), :format => :long) %></td>
+    <td width="20%" class="la">
+      <label>
+        <%= I18n.t 'activerecord.attributes.leave_application.end_at' %>
+      </label>
+    </td>
+    <td width="30%" class="la"><%= l(Time.parse(application.end_at), :format => :long) %></td>
+  </tr>
+  <%if application.real_end_at?%>
+      <tr>
+        <td>
+          <label for="real_end_at">
+           <%= I18n.t 'activerecord.attributes.leave_application.real_end_at'%>
+          </label>
+        </td>
+        <td colspan="3" class="la"><%= l(Time.parse(application.real_end_at), :format => :long)%></td>
+      </tr>
+  <%end%>
+
+  <tr>
+    <td>
+      <label for="use">
+       <%= I18n.t 'activerecord.attributes.leave_application.use'%>
+      </label>
+    </td>
+    <td colspan="3"><%= application.use%></td>
+  </tr>
+    <td>
+      <label for="business_travel_destination">
+       <%= I18n.t 'activerecord.attributes.business_trip_application.business_travel_destination'%>
+      </label>
+    </td>
+    <td colspan="3"><%= application.business_travel_destination%></td>
+  <!--</tr>-->
+
+  <tr>
+    <td>
+      <label for="reason">
+        <%= I18n.t 'activerecord.attributes.business_trip_application.reason' %>
+      </label>
+    </td>
+    <td colspan="3"><%= application.reason %></td>
+  </tr>
+
+  <%= render("application/detail_state_info", :application => application) %>
+</table>
+</div>

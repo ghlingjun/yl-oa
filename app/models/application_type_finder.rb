@@ -8,6 +8,9 @@ module ApplicationTypeFinder
   def leave_applications
     where('type = ?', 'LeaveApplication')
   end
+  def business_trip_applications
+    where('type = ?', 'BusinessTripApplication')
+  end
   def payment_applications
     where('type = ?', 'PaymentApplication')
   end

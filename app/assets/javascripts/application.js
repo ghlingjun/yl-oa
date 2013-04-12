@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require_tree .
 function split(val) {
     return val.split( /;\s*/ );
@@ -65,6 +66,40 @@ $(document).ready(function(){
             timeFormat: 'hh:mm',
             dateFormat: 'yy-MM-dd'
         });
+        $(".datePicker").datepicker({
+            dateFormat: 'yy-MM-dd'
+        });
+        $(".monthPicker").datepicker({
+            dateFormat: 'yy-MM',
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+
+            onClose: function(dateText, inst) {
+                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).val($.datepicker.formatDate('yy-MM-dd', new Date(year, month, 1)));
+            }
+        });
+
+//            dateFormat: 'yy-MM-dd',
+//            changeMonth: true,
+//            changeYear: true,
+//            showButtonPanel: true,
+//
+//            onClose: function(dateText, inst) {
+//                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+//                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+//                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+//                $(this).val($.datepicker.formatDate('MM yy', new Date(year, month, 1)));
+//            }
+//        });
+    });
+    $(function() {
+        $(".reset").click(function(event){
+            $(this).siblings("input[type='text']").val("");
+            event.preventDefault();
+        });
     });
 
 });
@@ -78,44 +113,11 @@ $(window).ready(
         $(this).parent().parent().next().toggle();
     });
 
-    if($('#application_receiver_state option:selected').val() == "rejected"){
-        $('#application_receiver_state').attr("disabled", "disabled");
-        $('#application_receiver_reason_field textarea').attr("disabled", "disabled");
-    }else if($('#application_receiver_state option:selected').val() == "pending"){
-        $('#application_receiver_submit').hide();
-    }else if($('#application_receiver_state option:selected').val() == "approved"){
-        $('#application_receiver_state').attr("disabled", "disabled");
-        $('#application_receiver_reason_field').hide();
-    }
-    $('#application_receiver_state').change(function(){
-        $("select option:selected").each(function(){
-            if($(this).val() == "approved"){
-                $('#application_receiver_reason_field textarea').val("");
-                $('#application_receiver_reason_field textarea').hide();
-                $('#application_receiver_submit').show();
-            }else if($(this).val() == "rejected"){
-                $('#application_receiver_reason_field textarea').show();
-                $('#application_receiver_submit').show();
-            }else if($(this).val() == "pending"){
-                $('#application_receiver_submit').hide();
-            }
-        })
-    });
+
     $('.disable').each(function(){
         $(this).attr("disabled", "disabled")
     });
 
-    $('#business_travel_destination').hide();
-    $("input:[name=leave_application[use]]:radio").change(
-        function(){
-            var $select_var =  $("input:[name=leave_application[use]]:radio:checked").val();
-            if($select_var == "出差"){
-                $('#business_travel_destination').show();
-            }else{
-                $('#business_travel_destination').hide();
-            }
-        }
-    );
   }
 );
 

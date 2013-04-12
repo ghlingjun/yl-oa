@@ -7,6 +7,14 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   protect_from_forgery
+
+  def download
+    render :nothing => true if params[:id]
+    model_obj = Application.find(params[:id])
+    path =  model_obj.attachment_file.path.partition("public")
+    send_file(path[1] + path[2])
+  end
+
   
   protected
     def current_user

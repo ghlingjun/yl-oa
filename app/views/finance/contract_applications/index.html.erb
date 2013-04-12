@@ -1,0 +1,51 @@
+<%= render 'side_bar/finance_affaire_side_bar' %>
+<h1 style="margin-top:0;">
+  <%= I18n.t "activerecord.models.contract_application" %>
+</h1>
+<p class="subtitle">
+  <%= I18n.t "views_contract_application.total_application_prompt" %>:&nbsp;
+  <%= @contract_applications.size %>
+</p>
+
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <th width="15%" class="la">
+      <%= I18n.t 'activerecord.attributes.application.sender' %>
+    </th>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.contract_application.contract_name' %>
+    </th>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.contract_application.sum' %>
+    </th>
+    <th width="15%" class="la">
+      <%= I18n.t 'activerecord.attributes.contract_application.use' %>
+    </th>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.application.created_at' %>
+    </th>
+    <th width="10" class="la">
+      <%= I18n.t 'activerecord.attributes.contract_application.finance_opinion'%>
+    </th>
+  </tr>
+  <% @contract_applications.each do |application| %>
+    <tr>
+      <td><%= application.sender_real_name%></td>
+      <td><%= link_to application.contract_name, finance_contract_application_path(application), :class => mark_if_necessary(application)%></td>
+      <td><%= application.sum%></td>
+      <td><%= application.use%></td>
+      <td><%= application.created_at%></td>
+      <td>
+        <%if finance_opinion_pending?(application)%>
+            <%= link_to(I18n.t("views_finance_expense.finance_opinion_info"),
+                        edit_finance_contract_application_path(application), :remote => true)%>
+        <%else%>
+            <%= Application::FINANCE_OPINION[application.finance_opinion.to_sym]%>
+        <%end%>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= render 'application/pagination', :posts =>  @payment_applications %>
+
+

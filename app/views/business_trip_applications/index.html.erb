@@ -1,0 +1,42 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+
+<h1 style="margin-top:0;">
+  <%= I18n.t("activerecord.models.business_trip_application") %>
+</h1>
+<p class="subtitle">
+  <%= I18n.t("views_business_trip_application.total_business_trip_prompt")%>:&nbsp;
+  <%= @size %>
+</p>
+
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <th width="55%" class="la">
+      <%= I18n.t('activerecord.attributes.business_trip_application.reason')%>
+    </th>
+    <th width="15%" class="la">
+      <%= I18n.t 'activerecord.attributes.common.state' %>
+    </th>
+    <th width="30%" class ="la">
+      <%= I18n.t 'activerecord.attributes.application.created_at' %>
+    </th>
+  </tr>
+  <% @business_trip_applications.each do |application| %>
+    <tr>
+      <td>
+        <%= link_to application.reason, application, :class => "admin" %>
+        <%= link_to  I18n.t('operate.delete'), application, :class => "tiny", :rel => "directory", :style => "float:right", :confirm => 'Are you sure?', :method => :delete %><br/>
+        <%if application.state == 'approved'%>
+            <%= link_to  I18n.t('views_leave_application.edit_real_end_at'), edit_business_trip_application_path(application), :class => "tiny", :rel => "directory", :style => "float:right" %>
+        <%end%>
+      </td>
+
+      <td><%= application.state_I18n %></td>
+      <td><%= application.created_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= render 'application/pagination', :posts => @business_trip_applications %>
+<p>
+    <%= link_to I18n.t('operate.new') + I18n.t("activerecord.models.business_trip_application"), new_business_trip_application_path, :class => "utility" %>
+</p>

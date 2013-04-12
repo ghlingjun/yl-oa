@@ -1,7 +1,9 @@
 class Application < ActiveRecord::Base
+  has_attached_file :attachment_file
+
   belongs_to :sender, :class_name=>"User", :foreign_key=>"sender"
 
-  has_many :application_receivers , :order=>:created_at do
+  has_many :application_receivers , :order=>:created_at, :dependent => :destroy do
     def reject
       where('state = ?', 'rejected')
     end
@@ -13,6 +15,11 @@ class Application < ActiveRecord::Base
     end
   end
   has_many :receivers,  :through => :application_receivers
+
+  FINANCE_OPINION = {
+      :approved => I18n.t("init_data.expense_application.finance_opinion.approved"),
+      :rejected => I18n.t("init_data.expense_application.finance_opinion.rejected")
+  }
 
   include ActiveModel::Transitions
   state_machine do

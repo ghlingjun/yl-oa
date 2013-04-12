@@ -20,7 +20,6 @@
       <%= link_to I18n.t('login.logout'), logout_path() %>
     </li>
   <% else %>
-    <li><%= link_to I18n.t("login.signup"), signup_path() %></li>
     <li><%= link_to I18n.t('login.login'), login_path() %></li>
   <% end %>
 </ul>

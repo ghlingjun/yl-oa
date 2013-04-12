@@ -60,8 +60,11 @@
 
 <p>
   <label for="parent_id"><%= I18n.t 'activerecord.attributes.user.parent_id', :default => 'add parent' %></label><br />
-
-  <%= settings.text_field :parent_id , :value=>get_parent_name(user), :class=>"autocomplete_input_single_text #{get_disable_class_name_if_necessary}"%>
+  <%if is_operator_role%>
+    <%= settings.text_field :parent_id , :value=>get_parent_name(user), :class=>"autocomplete_input_single_text"%>
+  <%else%>
+    <%= get_parent_name(user)%>
+  <%end%>
 </p>
 
 <p><%= settings.submit%></p>

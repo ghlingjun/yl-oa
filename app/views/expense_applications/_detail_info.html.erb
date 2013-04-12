@@ -9,6 +9,18 @@
     <td width="80%" class="la"><%= application.item_name %></td>
   </tr>
 
+  <%if application.expense_type%>
+    <tr>
+    <td width="20%" class="la">
+      <label>
+        <%= I18n.t 'activerecord.attributes.expense_application.expense_type' %>
+      </label>
+    </td>
+    <td width="80%" class="la"><%= application.class::EXPENSE_TYPE[application.expense_type.to_sym] %></td>
+    </tr>
+  <%end%>
+
+
   <tr>
     <td>
       <label>
@@ -17,6 +29,17 @@
     </td>
     <td><%= application.use %></td>
   </tr>
+
+  <%if application.use == I18n.t("init_data.expense_application.use.project")%>
+   <tr>
+    <td>
+      <label for="project_name">
+       <%= I18n.t 'activerecord.attributes.expense_application.project_name'%>
+      </label>
+    </td>
+    <td colspan="3"><%= application.project_name%></td>
+  </tr>
+  <%end%>
 
   <tr>
     <td>

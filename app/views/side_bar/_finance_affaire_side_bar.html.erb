@@ -3,7 +3,10 @@
     <%= I18n.t 'side_bar.finance.statis' %>
   </h5>
   <ul class="flat" style="margin-top:1em;">
-    <li><%= link_to I18n.t('side_bar.finance.expense_statis'), finance_expense_applications_path %> </li>
-    <li><%= link_to I18n.t('side_bar.finance.payment_statis'), finance_payment_applications_path %></li>
+    <li><%= link_to I18n.t('side_bar.finance.expense_statis') + "(#{ExpenseApplication.pending_finance_opinion.size})", finance_expense_applications_path %> </li>
+    <li><%= link_to I18n.t('side_bar.finance.payment_statis') + "(#{PaymentApplication.pending_finance_opinion.size})", finance_payment_applications_path %></li>
+    <li><%= link_to I18n.t('side_bar.sale.contract_statis') + "(#{ContractApplication.pending_finance_opinion.size})", finance_contract_applications_path %> </li>
+    <li><%= link_to I18n.t('side_bar.sale.billing_statis') + "(#{BillingApplication.pending_finance_opinion.size})", finance_billing_applications_path %> </li>
+
   </ul>
 <% end %>

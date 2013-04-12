@@ -17,4 +17,12 @@ module ApplicationHelper
     str
   end
 
+  def finance_opinion_for_select
+    result = []
+    Application::FINANCE_OPINION.each do |k, v|
+      result << [v, k]
+    end
+    result
+  end
+
 end

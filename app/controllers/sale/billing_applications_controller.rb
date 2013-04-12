@@ -1,6 +1,6 @@
 class Sale::BillingApplicationsController < Sale::BaseController
   def index
-    @billing_applications = BillingApplication.where("state='approved'")
+    @billing_applications = BillingApplication.where("state='approved'").paginate(:page => params[:page]).order('id DESC')
   end
 
   def show

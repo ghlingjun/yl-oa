@@ -1,4 +1,6 @@
 class WorkLogsController < ApplicationController
+  before_filter :set_remote_ip, :only => [:create]
+
   # GET /work_logs
   # GET /work_logs.json
   def index
@@ -86,5 +88,11 @@ class WorkLogsController < ApplicationController
       format.html { redirect_to work_logs_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def set_remote_ip
+    return if params[:work_log].nil?
+    params[:work_log][:remote_ip] = request.remote_ip
   end
 end

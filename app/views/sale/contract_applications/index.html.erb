@@ -25,8 +25,8 @@
   <% @contract_applications.each do |application| %>
     <tr>
       <td><%= application.sender_real_name%></td>
-      <!-- <td><%= link_to application.contract_name, finance_expense_application_path(application), :class => "admin"%></td> -->
-      <td><%= application.contract_name %></td>
+       <td><%= link_to application.contract_name, sale_contract_application_path(application), :class => "admin"%></td>
+      <!--<td><%= application.contract_name %></td>-->
       <td><%= application.sum%></td>
       <td><%= application.use%></td>
     </tr>

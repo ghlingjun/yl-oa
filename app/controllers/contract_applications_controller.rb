@@ -45,4 +45,15 @@ class ContractApplicationsController < ApplicationController
       format.xml  { render :xml => @contract_application }
     end
   end
+
+  def destroy
+    @contract_application = ContractApplication.find(params[:id])
+    @contract_application.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(contract_applications_url, :notice=>"contract_application was successfully deleted.") }
+      format.xml  { head :ok }
+    end
+  end
+
 end

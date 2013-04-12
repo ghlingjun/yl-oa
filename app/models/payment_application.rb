@@ -4,10 +4,13 @@ class PaymentApplication < Application
   validates :use, :presence => true
   validates :reason, :presence => true
 
+
   USE = [
     I18n.t("init_data.payment_application.use.cash"),
     I18n.t("init_data.payment_application.use.online_banking"),
     I18n.t("init_data.payment_application.use.check"),
     I18n.t("init_data.application.use.other")
   ]
+  scope :pending_finance_opinion, lambda{where("finance_opinion is null and state= 'approved'")}
+
 end

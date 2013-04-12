@@ -1,0 +1,60 @@
+<%= form_for(use_car_registration) do |f| %>
+  <% if use_car_registration.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(use_car_registration.errors.count, "error") %> prohibited this use_car_registration from being saved:</h2>
+
+      <ul>
+      <% use_car_registration.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div><h3><%= I18n.t 'views_use_car_registration.title' %></h3></div>
+
+  <div><p>
+    <label for="real_user_name" >
+      <%= I18n.t 'views_use_car_registration.real_user_name' %>
+    </label>
+    <%= f.text_field :real_user_name, :size => '15' %>
+  </p></div>
+
+  <div><p>
+    <label for="start_at_date" >
+      <%= I18n.t 'views_use_car_registration.start_at_date' %>
+    </label>
+    <%= f.text_field :start_at_date, :class => "datePicker", :size => '15' %>
+  </p></div>
+
+  <div><p>
+    <label for="end_at_date" >
+      <%= I18n.t 'views_use_car_registration.end_at_date' %>
+    </label>
+    <%= f.text_field :end_at_date, :class => "datePicker", :size => '15' %>
+  </p></div>
+
+
+  <div><p>
+    <label for="start_km_num" >
+      <%= I18n.t 'views_use_car_registration.start_km_num' %>
+    </label>
+    <%= f.text_field :start_km_num, :size => '15' %>
+  </p></div>
+
+  <div><p>
+    <label for="end_km_num" >
+      <%= I18n.t 'views_use_car_registration.end_km_num' %>
+    </label>
+    <%= f.text_field :end_km_num, :size => '15' %>
+  </p></div>
+
+  <div><p>
+    <label for="reason"><%= I18n.t 'views_use_car_registration.reason'%>
+    </label><br/>
+    <%= f.text_area :reason, :size => "60x3" %>
+  </p></div>
+
+  <div><p><%= submit_tag I18n.t('operate.commit') %></p></div>
+<% end %>

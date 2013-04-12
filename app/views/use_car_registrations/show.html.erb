@@ -1,0 +1,8 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<h3><%= I18n.t 'operate.details' %></h3>
+
+<%= render("detail_info", :use_car_registration => @use_car_registration) %>
+
+<%= link_to I18n.t('operate.edit'), edit_use_car_registration_path(@use_car_registration) %>
+<%= link_to I18n.t('operate.back'), use_car_registrations_path %>
+

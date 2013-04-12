@@ -9,4 +9,6 @@ class ContractApplication < Application
     I18n.t("init_data.contract_application.use.purchase"),
     I18n.t("init_data.application.use.other")
   ]
+  scope :pending_finance_opinion, lambda{where("finance_opinion is null and state= 'approved'")}
+
 end

@@ -11,4 +11,11 @@ class ExpenseApplication < Application
     I18n.t("init_data.expense_application.use.travel"),
     I18n.t("init_data.application.use.other")
   ]
+
+  EXPENSE_TYPE = {
+    :reimbursement => I18n.t("init_data.expense_application.expense_type.reimbursement"),
+    :loan => I18n.t("init_data.expense_application.expense_type.loan")
+  }
+  scope :pending_finance_opinion, lambda{where("finance_opinion is null and state= 'approved'")}
+
 end

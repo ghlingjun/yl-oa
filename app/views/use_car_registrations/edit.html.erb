@@ -1,0 +1,7 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<h1>Editing notice</h1>
+
+<%= render 'form', :use_car_registration=>@use_car_registration%>
+
+<%= link_to I18n.t('operate.show'), @use_car_registration %> |
+<%= link_to I18n.t('operate.back'), use_car_registrations_path %>

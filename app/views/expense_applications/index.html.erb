@@ -37,8 +37,14 @@
   <% @expense_applications.each do |application| %>
     <tr>
       <td>
-        <%= link_to application.item_name, application, :class => "admin" %>
-        <%= link_to  I18n.t('operate.delete'), application, :class => "tiny", :rel => "directory", :style => "float:right", :confirm => 'Are you sure?', :method => :delete %>
+        <%= link_to application.item_name, application, :class=>"admin" %>
+        <%= link_to I18n.t('operate.delete'), application, :class=>"tiny", 
+        :rel=>"directory", :style=>"float:right", :confirm=>'Are you sure?', 
+        :method=>:delete %>
+        <% if application.state == 'pending' %>
+          <%= link_to I18n.t('operate.edit'), edit_expense_application_path(application), 
+          :class=>"tiny", :rel=>"directory", :style=>"float:right" %>
+        <% end %>
       </td>
       <td>
         <%= application.state_I18n %>
@@ -48,8 +54,9 @@
   <% end %>
 </table>
 
-<%= render 'application/pagination', :posts =>  @expense_applications %>
+<%= render 'application/pagination', :posts=>@expense_applications %>
 
 <p>
-  <%= link_to I18n.t('operate.new') + I18n.t("activerecord.models.expense_application"), new_expense_application_path, :class => "utility" %>
+  <%= link_to I18n.t('operate.new') + I18n.t("activerecord.models.expense_application"), 
+  new_expense_application_path, :class=>"utility" %>
 </p>

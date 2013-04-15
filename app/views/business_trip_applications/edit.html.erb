@@ -2,7 +2,7 @@
 <h1><%= I18n.t 'views_leave_application.title'%></h1>
 
 <%= form_for @business_trip_application do |f| %>
-    <% if @business_trip_application.errors.any? %>
+  <% if @business_trip_application.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@business_trip_application.errors.count, "error") %>
         prohibited this user from being saved:</h2>

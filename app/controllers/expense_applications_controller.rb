@@ -46,6 +46,22 @@ class ExpenseApplicationsController < ApplicationController
     end
   end
 
+  def edit
+    @expense_application = ExpenseApplication.find(params[:id])
+  end
+  
+  def update
+    @expense_application = ExpenseApplication.find(params[:id])
+
+    respond_to do |format|
+      if @expense_application.update_attributes(params[:expense_application])
+        format.html { redirect_to(expense_application_path, :notice => 'expense_application was successfully update.') }
+      else
+        format.html { render "edit" }
+      end
+    end
+  end
+
   def destroy
     @expense_application = ExpenseApplication.find(params[:id])
     @expense_application.destroy

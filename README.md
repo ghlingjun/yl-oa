@@ -1,4 +1,4 @@
 yl-oa
 =====
 
-The OA system for YunLing CO.
+The OA system for YunLing Co.

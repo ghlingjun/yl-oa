@@ -9,7 +9,7 @@
     <td width="80%" class="la"><%= application.item_name %></td>
   </tr>
 
-  <%if application.expense_type%>
+  <%if application.expense_type %>
     <tr>
     <td width="20%" class="la">
       <label>
@@ -19,7 +19,6 @@
     <td width="80%" class="la"><%= application.class::EXPENSE_TYPE[application.expense_type.to_sym] %></td>
     </tr>
   <%end%>
-
 
   <tr>
     <td>

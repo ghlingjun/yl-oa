@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120726033338) do
+ActiveRecord::Schema.define(:version => 20120927031333) do
 
   create_table "application_receivers", :force => true do |t|
     t.integer  "application_id"
@@ -29,11 +29,11 @@ ActiveRecord::Schema.define(:version => 20120726033338) do
     t.string   "reason"
     t.integer  "sender"
     t.string   "type"
-    t.integer  "sum"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-    t.datetime "start_at"
-    t.datetime "end_at"
+    t.decimal  "sum",                          :precision => 8, :scale => 2
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
+    t.string   "start_at"
+    t.string   "end_at"
     t.datetime "back_date"
     t.string   "use"
     t.string   "item_name"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(:version => 20120726033338) do
     t.string   "purchase_company"
     t.string   "business_travel_destination"
     t.string   "real_end_at"
+    t.string   "attachment_file_file_name"
+    t.string   "attachment_file_content_type"
+    t.integer  "attachment_file_file_size"
+    t.datetime "attachment_file_updated_at"
+    t.string   "expense_type"
+    t.string   "project_name"
+    t.string   "finance_opinion"
   end
 
   create_table "grants", :force => true do |t|
@@ -105,6 +112,18 @@ ActiveRecord::Schema.define(:version => 20120726033338) do
   add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
   add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
 
+  create_table "use_car_registrations", :force => true do |t|
+    t.string   "real_user_name"
+    t.date     "start_at_date"
+    t.date     "end_at_date"
+    t.text     "reason"
+    t.integer  "start_km_num"
+    t.integer  "end_km_num"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "user_id"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "hashed_password"
@@ -122,7 +141,8 @@ ActiveRecord::Schema.define(:version => 20120726033338) do
     t.integer  "user_id"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
-    t.datetime "log_date"
+    t.date     "log_date"
+    t.string   "remote_ip"
   end
 
   add_index "work_logs", ["user_id"], :name => "index_work_logs_on_user_id"

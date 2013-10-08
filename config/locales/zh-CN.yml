@@ -379,6 +379,7 @@ zh-CN:
         invoice_6percent: "6%增票"
 
   txt:
+    footer_message: "Two's company. Three's a forum. More's a Beast."
     generate_prompt_info: "处理了您的关于 "
     approved: "同意"
     rejected: "拒绝"

@@ -3,14 +3,18 @@
 
 <%= form_tag session_path do %>
 <div id="password_fields">
-<p><%= label_tag I18n.t('activerecord.attributes.user.name', :default => 'user_module name') %><br />
-<%= text_field_tag 'name', @name %></p>
-
-<p><%= label_tag I18n.t('activerecord.attributes.user.password', :default => 'password') %><br/>
-<%= password_field_tag 'password', nil %></p>
-
-<p><%= submit_tag I18n.t("login.login") %>
+<p>
+	<%= label_tag I18n.t('activerecord.attributes.user.name', :default => 'user_module name') %><br />
+	<%= text_field_tag 'name', @name %>
 </p>
+
+<p>
+	<%= label_tag I18n.t('activerecord.attributes.user.password', :default => 'password') %><br/>
+	<%= password_field_tag 'password', nil %>
+</p>
+
+<p><%= submit_tag I18n.t("login.login") %></p>
+
 </div>
 
 <% end %>

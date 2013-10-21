@@ -10,32 +10,12 @@ if false
   #encoding: utf-8
   User.delete_all
   Notice.delete_all
-  liu = User.create!(:name=>"liuqingbo", :real_name=>I18n.t("init_data.user.name1"), :email=>"qingbo_matthew@163.com",
-          :password=>"123456", :password_confirmation=>"123456", :position=>User::Positions[:manager])
-  zhang = User.create!(:name=>"zhanglingjun", :real_name=>I18n.t("init_data.user.name2"), :email=>"qingbo_matthew@163.com",
-          :password=>"123456", :password_confirmation=>"123456", :position=>User::Positions[:manager])
-  wu = User.create!(:name=>"wuweiping", :real_name=>I18n.t("init_data.user.name3"), :email=>"qingbo_matthew@163.com",
-          :password=>"123456", :password_confirmation=>"123456", :position=>User::Positions[:vice_president])
-  xia = User.create!(:name=>"xiacongjun", :real_name=>I18n.t("init_data.user.name4"), :email=>"qingbo_matthew@163.com",
-          :password=>"123456", :password_confirmation=>"123456", :position=>User::Positions[:president])
-  liu_2 = User.create!(:name=>"liupei", :real_name=>I18n.t("init_data.user.name5"), :email=>"qingbo_matthew@163.com",
-          :password=>"123456", :password_confirmation=>"123456", :position=>User::Positions[:vice_president])
-  renshi = User.create!(:name=>"admin", :real_name=>I18n.t("init_data.user.name6"), :email=>"qingbo_matthew@163.com",
+  renshi = User.create!(:name=>"admin", :real_name=>I18n.t("init_data.user.name6"), :email=>"admin@gmail.com",
           :password=>"123456", :password_confirmation=>"123456", :position=>User::Positions[:staff])
-  caiwu = User.create!(:name=>"finance", :real_name=>I18n.t("init_data.user.name7"), :email=>"qingbo_matthew@163.com",
+  caiwu = User.create!(:name=>"finance", :real_name=>I18n.t("init_data.user.name7"), :email=>"finance@gmail.com",
           :password=>"123456", :password_confirmation=>"123456", :position=>User::Positions[:staff])
-  op = User.create!(:name=>"operator", :real_name=>I18n.t("init_data.user.name8"), :email=>"qingbo_matthew@163.com",
+  op = User.create!(:name=>"operator", :real_name=>I18n.t("init_data.user.name8"), :email=>"operator@gmail.com",
           :password=>"123456", :password_confirmation=>"123456", :position=>User::Positions[:staff])
-
-
-  liu.parent = wu
-  zhang.parent = wu
-  wu.parent = xia
-  liu_2.parent = xia
-  liu.save!
-  zhang.save!
-  wu.save!
-  liu_2.save!
 
   Role.delete_all
   operator = Role.create!(:name=>Role::ROLES[:operator])
@@ -44,14 +24,9 @@ if false
   sale = Role.create!(:name=>Role::ROLES[:sale])
   developer = Role.create!(:name=>Role::ROLES[:developer])
 
-  liu.roles << developer
-  zhang.roles << developer
-  wu.roles << developer
-  liu_2.roles << developer
-  op.roles << operator
-  xia.roles << developer
   renshi.roles << admin
   caiwu.roles << finance
+  op.roles << operator
 
   Right.delete_all
   notices_create = Right.create!(:resource => "notices", :operation => "CREATE")
@@ -74,8 +49,6 @@ if false
   operator.rights << users_read
   operator.rights << users_update
   operator.rights << users_delete
-
-
 
   roles_create = Right.create!(:resource => "roles", :operation => "CREATE")
   roles_read = Right.create!(:resource => "roles", :operation => "READ")
@@ -115,9 +88,9 @@ if false
   leave_applications << Right.create!(:resource => "leave_applications", :operation => "UPDATE")
   leave_applications << Right.create!(:resource => "leave_applications", :operation => "DELETE")
   leave_applications.each do|leave_application|
-      Role.all.each do|role|
-        role.rights << leave_application
-      end
+	Role.all.each do|role|
+	  role.rights << leave_application
+    end
   end
 
   item_applications = []
@@ -166,36 +139,68 @@ if false
     end
   end
 
-end
+  payment_applications = []
+  payment_applications << Right.create!(:resource => "payment_applications", :operation => "CREATE")
+  payment_applications << Right.create!(:resource => "payment_applications", :operation => "READ")
+  payment_applications << Right.create!(:resource => "payment_applications", :operation => "UPDATE")
+  payment_applications << Right.create!(:resource => "payment_applications", :operation => "DELETE")
+  payment_applications.each do|payment_application|
+  	Role.all.each do|role|
+      role.rights << payment_application
+    end
+  end
 
-payment_applications = []
-payment_applications << Right.create!(:resource => "payment_applications", :operation => "CREATE")
-payment_applications <<  Right.create!(:resource => "payment_applications", :operation => "READ")
-payment_applications <<  Right.create!(:resource => "payment_applications", :operation => "UPDATE")
-payment_applications << Right.create!(:resource => "payment_applications", :operation => "DELETE")
-payment_applications.each do|payment_application|
+  contract_applications = []
+  contract_applications << Right.create!(:resource => "contract_applications", :operation => "CREATE")
+  contract_applications << Right.create!(:resource => "contract_applications", :operation => "READ")
+  contract_applications << Right.create!(:resource => "contract_applications", :operation => "UPDATE")
+  contract_applications << Right.create!(:resource => "contract_applications", :operation => "DELETE")
+  contract_applications.each do|contract_application|
+    Role.all.each do|role|
+      role.rights << contract_application
+    end
+  end
+
+  billing_applications = []
+  billing_applications << Right.create!(:resource => "billing_applications", :operation => "CREATE")
+  billing_applications <<  Right.create!(:resource => "billing_applications", :operation => "READ")
+  billing_applications <<  Right.create!(:resource => "billing_applications", :operation => "UPDATE")
+  billing_applications << Right.create!(:resource => "billing_applications", :operation => "DELETE")
+  billing_applications.each do|billing_application|
+    Role.all.each do|role|
+      role.rights << billing_application
+    end
+  end
+
+  r = Right.create!(:resource => "application", :operation => "download")
   Role.all.each do|role|
-    role.rights << payment_application
+    role.rights << r
+  end
+
+  business_trip_applications = []
+  business_trip_applications << Right.create!(:resource => "business_trip_applications", :operation => "CREATE")
+  business_trip_applications <<  Right.create!(:resource => "business_trip_applications", :operation => "READ")
+  business_trip_applications <<  Right.create!(:resource => "business_trip_applications", :operation => "UPDATE")
+  business_trip_applications << Right.create!(:resource => "business_trip_applications", :operation => "DELETE")
+  business_trip_applications.each do|business_trip_application|
+    Role.all.each do|role|
+      role.rights << business_trip_application
+    end
+  end
+
+  r = Right.create!(:resource => "work_logs", :operation => "statistics")
+  Role.all.each do|role|
+    role.rights << r
   end
 end
-contract_applications = []
-contract_applications << Right.create!(:resource => "contract_applications", :operation => "CREATE")
-contract_applications <<  Right.create!(:resource => "contract_applications", :operation => "READ")
-contract_applications <<  Right.create!(:resource => "contract_applications", :operation => "UPDATE")
-contract_applications << Right.create!(:resource => "contract_applications", :operation => "DELETE")
-contract_applications.each do|contract_application|
-  Role.all.each do|role|
-    role.rights << contract_application
-  end
-end
 
-billing_applications = []
-billing_applications << Right.create!(:resource => "billing_applications", :operation => "CREATE")
-billing_applications <<  Right.create!(:resource => "billing_applications", :operation => "READ")
-billing_applications <<  Right.create!(:resource => "billing_applications", :operation => "UPDATE")
-billing_applications << Right.create!(:resource => "billing_applications", :operation => "DELETE")
-billing_applications.each do|billing_application|
+use_car_registrations = []
+use_car_registrations << Right.create!(:resource => "use_car_registrations", :operation => "CREATE")
+use_car_registrations << Right.create!(:resource => "use_car_registrations", :operation => "READ")
+use_car_registrations << Right.create!(:resource => "use_car_registrations", :operation => "UPDATE")
+use_car_registrations << Right.create!(:resource => "use_car_registrations", :operation => "DELETE")
+use_car_registrations.each do|use_car_registration|
   Role.all.each do|role|
-    role.rights << billing_application
+    role.rights << use_car_registration
   end
 end

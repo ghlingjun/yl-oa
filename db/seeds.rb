@@ -62,8 +62,8 @@ if false
   Message.delete_all
   communicate_messages = []
   communicate_messages << Right.create!(:resource => "communicate_messages", :operation => "CREATE")
-  communicate_messages <<  Right.create!(:resource => "communicate_messages", :operation => "READ")
-  communicate_messages <<  Right.create!(:resource => "communicate_messages", :operation => "UPDATE")
+  communicate_messages << Right.create!(:resource => "communicate_messages", :operation => "READ")
+  communicate_messages << Right.create!(:resource => "communicate_messages", :operation => "UPDATE")
   communicate_messages << Right.create!(:resource => "communicate_messages", :operation => "DELETE")
   communicate_messages.each do|communicate_message|
     Role.all.each do|role|
@@ -72,8 +72,8 @@ if false
   end
   prompt_messages = []
   prompt_messages << Right.create!(:resource => "prompt_messages", :operation => "CREATE")
-  prompt_messages <<  Right.create!(:resource => "prompt_messages", :operation => "READ")
-  prompt_messages <<  Right.create!(:resource => "prompt_messages", :operation => "UPDATE")
+  prompt_messages << Right.create!(:resource => "prompt_messages", :operation => "READ")
+  prompt_messages << Right.create!(:resource => "prompt_messages", :operation => "UPDATE")
   prompt_messages << Right.create!(:resource => "prompt_messages", :operation => "DELETE")
   prompt_messages.each do|prompt_messages|
     Role.all.each do|role|
@@ -106,8 +106,8 @@ if false
 
   expense_applications = []
   expense_applications << Right.create!(:resource => "expense_applications", :operation => "CREATE")
-  expense_applications <<  Right.create!(:resource => "expense_applications", :operation => "READ")
-  expense_applications <<  Right.create!(:resource => "expense_applications", :operation => "UPDATE")
+  expense_applications << Right.create!(:resource => "expense_applications", :operation => "READ")
+  expense_applications << Right.create!(:resource => "expense_applications", :operation => "UPDATE")
   expense_applications << Right.create!(:resource => "expense_applications", :operation => "DELETE")
   expense_applications.each do|expense_application|
     Role.all.each do|role|
@@ -163,8 +163,8 @@ if false
 
   billing_applications = []
   billing_applications << Right.create!(:resource => "billing_applications", :operation => "CREATE")
-  billing_applications <<  Right.create!(:resource => "billing_applications", :operation => "READ")
-  billing_applications <<  Right.create!(:resource => "billing_applications", :operation => "UPDATE")
+  billing_applications << Right.create!(:resource => "billing_applications", :operation => "READ")
+  billing_applications << Right.create!(:resource => "billing_applications", :operation => "UPDATE")
   billing_applications << Right.create!(:resource => "billing_applications", :operation => "DELETE")
   billing_applications.each do|billing_application|
     Role.all.each do|role|
@@ -179,8 +179,8 @@ if false
 
   business_trip_applications = []
   business_trip_applications << Right.create!(:resource => "business_trip_applications", :operation => "CREATE")
-  business_trip_applications <<  Right.create!(:resource => "business_trip_applications", :operation => "READ")
-  business_trip_applications <<  Right.create!(:resource => "business_trip_applications", :operation => "UPDATE")
+  business_trip_applications << Right.create!(:resource => "business_trip_applications", :operation => "READ")
+  business_trip_applications << Right.create!(:resource => "business_trip_applications", :operation => "UPDATE")
   business_trip_applications << Right.create!(:resource => "business_trip_applications", :operation => "DELETE")
   business_trip_applications.each do|business_trip_application|
     Role.all.each do|role|
@@ -192,15 +192,17 @@ if false
   Role.all.each do|role|
     role.rights << r
   end
-end
 
-use_car_registrations = []
-use_car_registrations << Right.create!(:resource => "use_car_registrations", :operation => "CREATE")
-use_car_registrations << Right.create!(:resource => "use_car_registrations", :operation => "READ")
-use_car_registrations << Right.create!(:resource => "use_car_registrations", :operation => "UPDATE")
-use_car_registrations << Right.create!(:resource => "use_car_registrations", :operation => "DELETE")
-use_car_registrations.each do|use_car_registration|
-  Role.all.each do|role|
-    role.rights << use_car_registration
+  use_car_registrations = []
+  use_car_registrations << Right.create!(:resource => "use_car_registrations", :operation => "CREATE")
+  use_car_registrations << Right.create!(:resource => "use_car_registrations", :operation => "READ")
+  use_car_registrations << Right.create!(:resource => "use_car_registrations", :operation => "UPDATE")
+  use_car_registrations << Right.create!(:resource => "use_car_registrations", :operation => "DELETE")
+  use_car_registrations.each do|use_car_registration|
+    Role.all.each do|role|
+      role.rights << use_car_registration
+    end
   end
+
+# end if
 end

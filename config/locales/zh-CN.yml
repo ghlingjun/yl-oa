@@ -37,6 +37,7 @@ zh-CN:
     daily_office: "日常办公"
     admin_manage: "行政管理"
     finance_manage: "财务管理"
+    human_resources_manage: "人事管理"
     sale_manage: "销售管理"
     system_manage: "系统管理"
     personal_setting: "个人设置"
@@ -327,6 +328,7 @@ zh-CN:
     role:
       operator: "管理员"
       admin: "行政"
+      human_resources: "人事"
       finance: "财务"
       sale: "销售"
       developer: "普通"

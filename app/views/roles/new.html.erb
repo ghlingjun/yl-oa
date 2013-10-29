@@ -5,13 +5,12 @@
       <h2><%= pluralize(@role.errors.count, "error") %>
         prohibited this role from being saved:</h2>
       <ul>
-      <% @role.errors.full_messages.each do |message| %>
+        <% @role.errors.full_messages.each do |message| %>
         <li><%= message %></li>
-      <% end %>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
 
   <p><label for="name"><%= I18n.t 'txt.login_name', :default => '角色名' %></label><br/>
   <%= f.text_field :name %></p>

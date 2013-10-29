@@ -1,11 +1,23 @@
 
-<h3>个人信息</h3>
+<h3>角色信息</h3>
+
+<%= form_for @role do |settings| %>
+  <% if @role.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@role.errors.count, "error") %>
+        prohibited this role from being saved:</h2>
+      <ul>
+      <% @role.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <p>
-    <label for="name"><%= I18n.t 'txt.views_roles.login_title', :default => '角色名' %></label></p>
-  <p>
-    <%= settings.text_field :name %>
+    <label for="name"><%= I18n.t 'txt.views_roles.login_title', :default => '角色名' %></label>
   </p>
+  <p><%= settings.text_field :name %></p>
 
-
-
+  <p><%= settings.submit %></p>
+<% end %>

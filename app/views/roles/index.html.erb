@@ -13,8 +13,8 @@
   <tr>
     <td><%=role.name%></td>
     <td class="c3" width="12%">
-      <%= link_to  '编辑', edit_role_path(role), :class => "tiny", :rel => "directory", :style => "float:right" %><br/>
-      <%= link_to '删除', role, :class => "tiny", :rel => "directory", :style => "float:right", :confirm => 'Are you sure?', :method => :delete %>
+      <%= link_to '编辑', edit_role_path(role), :class => "tiny", :rel => "directory", :style => "float:right" %><br/>
+      <!-- <%= link_to '删除', role, :class => "tiny", :rel => "directory", :style => "float:right", :confirm => 'Are you sure?', :method => :delete %> -->
     </td>
   </tr>
 <% end %>

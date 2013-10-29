@@ -26,6 +26,8 @@ YunlingOA::Application.routes.draw do
 
   resources :users
 
+  resources :roles
+  
   resources :use_car_registrations
 
   resource  :session

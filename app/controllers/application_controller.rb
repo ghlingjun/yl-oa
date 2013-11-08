@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
     send_file(path[1] + path[2])
   end
 
-  
   protected
     def current_user
       @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]

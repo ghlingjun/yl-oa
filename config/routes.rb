@@ -47,6 +47,14 @@ YunlingOA::Application.routes.draw do
     match 'statistics'      => 'work_logs#statistics',     :as => :statistics
   end
 
+  namespace :human_resources do
+    resources :leave_applications
+    resources :work_logs
+    resources :business_trip_applications
+    resources :use_car_registrations
+    match 'statistics'      => 'work_logs#statistics',     :as => :statistics
+  end
+
   namespace :finance do
     resources :expense_applications
     resources :payment_applications

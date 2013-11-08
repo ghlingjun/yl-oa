@@ -6,41 +6,47 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-if false
+if true
   #encoding: utf-8
-  User.delete_all
-  Notice.delete_all
-  renshi = User.create!(:name=>"admin", :real_name=>I18n.t("init_data.user.name6"), :email=>"admin@gmail.com",
-          :password=>"123456", :password_confirmation=>"123456", :position=>User::Positions[:staff])
-  caiwu = User.create!(:name=>"finance", :real_name=>I18n.t("init_data.user.name7"), :email=>"finance@gmail.com",
-          :password=>"123456", :password_confirmation=>"123456", :position=>User::Positions[:staff])
-  op = User.create!(:name=>"operator", :real_name=>I18n.t("init_data.user.name8"), :email=>"operator@gmail.com",
-          :password=>"123456", :password_confirmation=>"123456", :position=>User::Positions[:staff])
+  # User.delete_all
+  
+  root = User.create!(:name=>"root", :real_name=>I18n.t("init_data.user.name"), 
+    :email=>"root@gmail.com", :password=>"admin1314", 
+    :password_confirmation=>"admin1314", :position=>User::Positions[:staff])
 
-  Role.delete_all
-  operator = Role.create!(:name=>Role::ROLES[:operator])
-  admin = Role.create!(:name=>Role::ROLES[:admin])
-  finance = Role.create!(:name=>Role::ROLES[:finance])
-  sale = Role.create!(:name=>Role::ROLES[:sale])
-  developer = Role.create!(:name=>Role::ROLES[:developer])
-
-  renshi.roles << admin
-  caiwu.roles << finance
-  op.roles << operator
-
+  # Role.delete_all
+  # operator = Role.create!(:id=>1, :name=>Role::ROLES[:operator])
+  # data = {}
+  # data["id"] = 1
+  # data["name"] = Role::ROLES[:operator]
+  # operator = Role.find_or_create_by_id(data["id"]).update_attributes(data)
+  operator = Role.find_or_initialize_by_id(1)
+  operator.name = Role::ROLES[:operator]
+  operator.save!
+  # admin = Role.create!(:id=>2, :name=>Role::ROLES[:admin])
+  # finance = Role.create!(:id=>3, :name=>Role::ROLES[:finance])
+  # sale = Role.create!(:id=>4, :name=>Role::ROLES[:sale])
+  # developer = Role.create!(:id=>5, :name=>Role::ROLES[:developer])
+  # human_resources = Role.create!(:id=>6, :name=>Role::ROLES[:human_resources])
+  admin = Role.find_or_initialize_by_id(2)
+  admin.name = Role::ROLES[:admin]
+  admin.save!
+  finance = Role.find_or_initialize_by_id(3)
+  finance.name = Role::ROLES[:finance]
+  finance.save!
+  sale = Role.find_or_initialize_by_id(4)
+  sale.name = Role::ROLES[:sale]
+  sale.save!
+  developer = Role.find_or_initialize_by_id(5)
+  developer.name = Role::ROLES[:developer]
+  developer.save!
+  human_resources = Role.find_or_initialize_by_id(6)
+  human_resources.name = Role::ROLES[:human_resources]
+  human_resources.save!
+  
+  root.roles << operator
+ 
   Right.delete_all
-  notices_create = Right.create!(:resource => "notices", :operation => "CREATE")
-  notices_read = Right.create!(:resource => "notices", :operation => "READ")
-  notices_update = Right.create!(:resource => "notices", :operation => "UPDATE")
-  notices_delete = Right.create!(:resource => "notices", :operation => "DELETE")
-
-  Role.all.each do |role|
-    role.rights << notices_read
-  end
-  admin.rights << notices_create
-  admin.rights << notices_update
-  admin.rights << notices_delete
-
   users_create = Right.create!(:resource => "users", :operation => "CREATE")
   users_read = Right.create!(:resource => "users", :operation => "READ")
   users_update = Right.create!(:resource => "users", :operation => "UPDATE")
@@ -59,7 +65,19 @@ if false
   operator.rights << roles_update
   operator.rights << roles_delete
 
-  Message.delete_all
+  # Notice.delete_all
+  notices_create = Right.create!(:resource => "notices", :operation => "CREATE")
+  notices_read = Right.create!(:resource => "notices", :operation => "READ")
+  notices_update = Right.create!(:resource => "notices", :operation => "UPDATE")
+  notices_delete = Right.create!(:resource => "notices", :operation => "DELETE")
+  Role.all.each do |role|
+    role.rights << notices_read
+  end
+  admin.rights << notices_create
+  admin.rights << notices_update
+  admin.rights << notices_delete
+
+  # Message.delete_all
   communicate_messages = []
   communicate_messages << Right.create!(:resource => "communicate_messages", :operation => "CREATE")
   communicate_messages << Right.create!(:resource => "communicate_messages", :operation => "READ")
@@ -81,7 +99,7 @@ if false
     end
   end
 
-  Application.delete_all
+  # Application.delete_all
   leave_applications = []
   leave_applications << Right.create!(:resource => "leave_applications", :operation => "CREATE")
   leave_applications << Right.create!(:resource => "leave_applications", :operation => "READ")
@@ -115,7 +133,7 @@ if false
     end
   end
 
-  ApplicationReceiver.delete_all
+  # ApplicationReceiver.delete_all
   application_receivers = []
   application_receivers << Right.create!(:resource => "application_receivers", :operation => "CREATE")
   application_receivers << Right.create!(:resource => "application_receivers", :operation => "READ")
@@ -127,7 +145,7 @@ if false
     end
   end
 
-  WorkLog.delete_all
+  # WorkLog.delete_all
   work_logs = []
   work_logs << Right.create!(:resource => "work_logs", :operation => "CREATE")
   work_logs << Right.create!(:resource => "work_logs", :operation => "READ")
@@ -204,5 +222,4 @@ if false
     end
   end
 
-# end if
 end

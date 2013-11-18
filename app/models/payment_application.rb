@@ -4,7 +4,6 @@ class PaymentApplication < Application
   validates :use, :presence => true
   validates :reason, :presence => true
 
-
   USE = [
     I18n.t("init_data.payment_application.use.cash"),
     I18n.t("init_data.payment_application.use.online_banking"),

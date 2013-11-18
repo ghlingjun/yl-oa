@@ -7,7 +7,7 @@ class Role < ActiveRecord::Base
     :finance  => I18n.t("init_data.role.finance"),
     :sale     => I18n.t("init_data.role.sale"),
     :developer=> I18n.t("init_data.role.developer"),
-    :human_resources=> I18n.t("init_data.role.human_resources")
+    :human_resource => I18n.t("init_data.role.human_resource")
   }
   has_and_belongs_to_many :users
   has_many :grants

@@ -1,0 +1,9 @@
+<%= render 'side_bar/human_resource_side_bar' %>
+<p>
+  <b><%= label_tag :content, I18n.t("activerecord.attributes.work_log.cotent")%></b>
+  <%= @work_log.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_work_log_path(@work_log) %> |
+<%= link_to 'Back', work_logs_path %>

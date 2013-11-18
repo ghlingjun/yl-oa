@@ -1,0 +1,7 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<h1>Editing notice</h1>
+
+<%= render 'form', :certification_application => @certification_application %>
+
+<%= link_to I18n.t('operate.show'), @certification_application %> |
+<%= link_to I18n.t('operate.back'), certification_application s_path %>

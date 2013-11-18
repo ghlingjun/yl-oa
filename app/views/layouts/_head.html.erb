@@ -1,7 +1,12 @@
 <ul id="nav">
-  <li><%= link_to I18n.t('menu.daily_office'), root_path, :rel => 'home' %></li>
   <li>
-    <%= link_to I18n.t('menu.admin_manage'), admin_leave_applications_path, :rel => 'home'%>
+    <%= link_to I18n.t('menu.daily_office'), root_path, :rel => 'home' %>
+  </li>
+  <li>
+    <%= link_to I18n.t('menu.admin_manage'), admin_use_car_registrations_path, :rel => 'home'%>
+  </li>
+  <li>
+    <%= link_to I18n.t('menu.human_resource_manage'), human_resource_leave_applications_path, :rel => 'home' %>
   </li>
   <li>
     <%= link_to I18n.t('menu.finance_manage'), finance_expense_applications_path, :rel => 'home' %>

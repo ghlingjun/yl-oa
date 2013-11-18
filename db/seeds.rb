@@ -8,11 +8,6 @@
 
 if true
   #encoding: utf-8
-  # User.delete_all
-  
-  root = User.create!(:name=>"root", :real_name=>I18n.t("init_data.user.name"), 
-    :email=>"root@gmail.com", :password=>"admin1314", 
-    :password_confirmation=>"admin1314", :position=>User::Positions[:staff])
 
   # Role.delete_all
   # operator = Role.create!(:id=>1, :name=>Role::ROLES[:operator])
@@ -27,7 +22,7 @@ if true
   # finance = Role.create!(:id=>3, :name=>Role::ROLES[:finance])
   # sale = Role.create!(:id=>4, :name=>Role::ROLES[:sale])
   # developer = Role.create!(:id=>5, :name=>Role::ROLES[:developer])
-  # human_resources = Role.create!(:id=>6, :name=>Role::ROLES[:human_resources])
+  # human_resource = Role.create!(:id=>6, :name=>Role::ROLES[:human_resource])
   admin = Role.find_or_initialize_by_id(2)
   admin.name = Role::ROLES[:admin]
   admin.save!
@@ -40,11 +35,15 @@ if true
   developer = Role.find_or_initialize_by_id(5)
   developer.name = Role::ROLES[:developer]
   developer.save!
-  human_resources = Role.find_or_initialize_by_id(6)
-  human_resources.name = Role::ROLES[:human_resources]
-  human_resources.save!
+  human_resource = Role.find_or_initialize_by_id(6)
+  human_resource.name = Role::ROLES[:human_resource]
+  human_resource.save!
   
-  root.roles << operator
+  # User.delete_all
+  # root = User.create!(:name=>"root", :real_name=>I18n.t("init_data.user.name"), 
+  #   :email=>"root@gmail.com", :password=>"admin1314", 
+  #   :password_confirmation=>"admin1314", :position=>User::Positions[:staff])
+  # root.roles << operator
  
   Right.delete_all
   users_create = Right.create!(:resource => "users", :operation => "CREATE")
@@ -222,4 +221,14 @@ if true
     end
   end
 
+  certification_applications = []
+  certification_applications << Right.create!(:resource => "certification_applications", :operation => "CREATE")
+  certification_applications << Right.create!(:resource => "certification_applications", :operation => "READ")
+  certification_applications << Right.create!(:resource => "certification_applications", :operation => "UPDATE")
+  certification_applications << Right.create!(:resource => "certification_applications", :operation => "DELETE")
+  certification_applications.each do|certification_application|
+    Role.all.each do|role|
+      role.rights << certification_application
+    end
+  end
 end

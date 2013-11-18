@@ -1,0 +1,6 @@
+<%= render 'side_bar/human_resource_side_bar' %>
+<h3><%= I18n.t 'views_leave_application.title' %></h3>
+
+<%= render 'business_trip_applications/detail_info', :application=>@business_trip_application %>
+
+<%= link_to I18n.t('operate.back'), human_resource_leave_application_path %>

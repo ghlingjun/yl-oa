@@ -1,0 +1,6 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<h1><%= I18n.t("operate.new") + I18n.t("activerecord.models.certification_application")%></h1>
+
+<%= render 'form' ,:certification_application => @certification_application %>
+
+<%= link_to I18n.t('operate.back'), certification_applications_path %>

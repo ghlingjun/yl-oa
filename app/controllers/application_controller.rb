@@ -28,8 +28,7 @@ class ApplicationController < ActionController::Base
 
     def check_authorization
       unless current_user && current_user.can?(action_name, controller_name)
-        redirect_to root_path,
-                      :notice=>I18n.t("error.permit_deny")
+        redirect_to root_path, :notice=>I18n.t("error.permit_deny")
       end
     end
 

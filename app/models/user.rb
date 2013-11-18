@@ -46,6 +46,8 @@ class User < ActiveRecord::Base
 
   has_many :use_car_registrations
 
+  has_many :certification_applications
+
   scope :search_for_real_name, lambda{|q| {:conditions => ['real_name LIKE ?', "%#{q}%"]}}
 
   acts_as_tree :order=>:name, :dependent => :nullify

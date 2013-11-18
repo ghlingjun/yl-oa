@@ -1,20 +1,5 @@
 <% content_for :right do %>
   <h5 style="margin-bottom:1.0em;">
-    <%= link_to I18n.t('side_bar.admin_affaire.leave_application'), admin_leave_applications_path %>
-  </h5>
-  <h5 style="margin-bottom:1.0em;">
-    <%= link_to I18n.t('side_bar.admin_affaire.business_trip_application'), admin_business_trip_applications_path %>
-  </h5>
-  <h5 style="margin-bottom:1.0em;">
     <%= link_to I18n.t('side_bar.admin_affaire.use_car_registration'), admin_use_car_registrations_path %>
   </h5>
-
-  <h5 style="margin-bottom:1.0em;">
-    <%= I18n.t 'side_bar.admin_affaire.work_log_mgr'%>
-  </h5>
-
-  <ul class="flat" style="margin-top:1em;">
-    <li><%= link_to I18n.t('side_bar.admin_affaire.work_log'), admin_statistics_path%></li>
-  </ul>
-
 <% end %>

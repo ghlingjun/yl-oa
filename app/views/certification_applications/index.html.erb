@@ -1,0 +1,33 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<h1 style="margin-top:0;"><%= I18n.t("views_certification_application.title")%></h1>
+
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <th class="la" width="16%"><%= I18n.t 'views_certification_application.certificater_name'%></th>
+    <th class="la" width="16%"><%= I18n.t('views_certification_application.real_user_name') %></th>
+    <th class="la" width="16%"><%= I18n.t('views_certification_application.out_date') %></th>
+    <th class="la" width="16%"><%= I18n.t('views_certification_application.back_date') %></th>
+    <th class="la" width="20%"><%= I18n.t('views_certification_application.reason') %></th>
+    <th class="la" width="16%"><%= I18n.t('views_certification_application.use_mode') %></th>
+  </tr>
+
+  <% @certification_applications.each do |certification_application| %>
+    <tr>
+      <td>
+        <%= link_to certification_application.certificater_name, certification_application_path(certification_application), :class => "admin" %>
+      </td>
+
+      <td><%= certification_application.real_user_name %></td>
+      <td><%= certification_application.out_date %></td>
+      <td><%= certification_application.back_date %></td>
+      <td><%= certification_application.reason %></td>
+      <td><%= certification_application.use_mode %></td>
+    </tr>
+  <% end %>
+</table>
+</table>
+
+<%= render 'application/pagination', :posts =>  @certification_applications %>
+
+<p><%= link_to I18n.t('operate.new') + I18n.t('activerecord.models.certification_application'), new_certification_application_path, :class => "utility" %></p>
+

@@ -1,0 +1,72 @@
+<div>
+<table border="1" width="100%">
+  <tr>
+    <td>
+      <label>
+        <%= I18n.t 'views_certification_application.certificater_name' %>
+      </label>
+    </td>
+    <td colspan="3">
+      <%= certification_application.certificater_name %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label>
+        <%= I18n.t 'views_certification_application.real_user_name' %>
+      </label>
+    </td>
+    <td colspan="3">
+      <%= certification_application.real_user_name %>
+    </td>
+  </tr>
+  <tr>
+    <td width="20%" class="la">
+      <label>
+        <%= I18n.t 'views_certification_application.out_date' %>
+      </label>
+    </td>
+    <td width="30%" class="la">
+      <%= certification_application.out_date %>
+    </td>
+    <td width="20%" class="la">
+      <label>
+        <%= I18n.t 'views_certification_application.back_date' %>
+      </label>
+    </td>
+    <td width="30%" class="la">
+      <%= certification_application.back_date %>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="20%" class="la">
+      <label>
+        <%= I18n.t 'views_certification_application.reason' %>
+      </label>
+    </td>
+    <td width="30%" class="la">
+      <%= certification_application.reason %>
+    </td>
+    <td width="20%" class="la">
+      <label>
+        <%= I18n.t 'views_certification_application.use_mode' %>
+      </label>
+    </td>
+    <td width="30%" class="la">
+      <%= certification_application.use_mode %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <label>
+        <%= I18n.t 'views_certification_application.details' %>
+      </label>
+    </td>
+    <td colspan="3">
+      <%= certification_application.details %>
+    </td>
+  </tr>
+</table>
+</div>

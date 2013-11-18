@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  real_user_name: MyString
+  user_id: 1
+  certificater_name: MyString
+  reason: MyString
+  use_mode: MyString
+  out_date: 2013-11-15
+  back_date: 2013-11-15
+  details: MyText
+
+two:
+  real_user_name: MyString
+  user_id: 1
+  certificater_name: MyString
+  reason: MyString
+  use_mode: MyString
+  out_date: 2013-11-15
+  back_date: 2013-11-15
+  details: MyText

@@ -54,3 +54,6 @@ gem "rails_best_practices"
 gem 'will_paginate', '~> 3.0'
 gem 'paperclip', '~> 3.0'
 
+group :development do
+  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git'
+end

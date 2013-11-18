@@ -1,0 +1,39 @@
+<%= render 'side_bar/human_resource_side_bar' %>
+<h1 style="margin-top:0;">
+  <%= I18n.t "activerecord.models.business_trip_application" %>
+</h1>
+<p class="subtitle">
+  <%= I18n.t "views_leave_application.total_application_prompt" %>:&nbsp;
+  <%= @business_trip_applications.size %>
+</p>
+
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.application.sender' %>
+    </th>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.leave_application.start_at' %>
+    </th>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.leave_application.end_at' %>
+    </th>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.business_trip_application.use' %>
+    </th>
+    <th width="20%" class="la">
+      <%= I18n.t 'activerecord.attributes.application.created_at' %>
+    </th>
+  </tr>
+  <% @business_trip_applications.each do |application| %>
+    <tr>
+      <td><%= link_to(application.sender_real_name, human_resource_leave_application_path(application), :class => "admin")%></td>
+      <td><%= l(Time.parse(application.start_at), :format => :long) %></td>
+      <td>
+        <%= application.real_end_at? ? l(Time.parse(application.real_end_at), :format => :long) : l(Time.parse(application.end_at), :format => :long) %>
+      </td>
+      <td><%= application.use %></td>
+      <td><%= l(application.created_at, :format => :long)  %></td>
+    </tr>
+  <% end %>
+</table>

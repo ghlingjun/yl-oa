@@ -37,7 +37,7 @@ zh-CN:
     daily_office: "日常办公"
     admin_manage: "行政管理"
     finance_manage: "财务管理"
-    human_resources_manage: "人事管理"
+    human_resource_manage: "人事管理"
     sale_manage: "销售管理"
     system_manage: "系统管理"
     personal_setting: "个人设置"
@@ -54,12 +54,7 @@ zh-CN:
       unprocessed_application: "待处理事项"
     admin_affaire:
       statistics: "统计"
-      leave_application: "请假申请统计"
-      business_trip_application: "外出/出差申请统计"
       use_car_registration: "用车登记统计"
-      work_log_mgr: "工作日志管理"
-      work_log: "工作日志统计"
-      work_log_query: "查询工作日志"
     finance:
       statis: "统计"
       expense_statis: "费用申请统计"
@@ -68,6 +63,12 @@ zh-CN:
       statis: "统计"
       contract_statis: "合同申请统计"
       billing_statis: "开票申请统计"
+    human_resource:
+      leave_application: "请假申请统计"
+      business_trip_application: "外出/出差申请统计"
+      work_log_mgr: "工作日志管理"
+      work_log: "工作日志统计"
+      work_log_query: "查询工作日志"
 
   login:
     login_prompt: "请登录"
@@ -173,7 +174,15 @@ zh-CN:
     start_km_num: "开始公里数"
     end_km_num: "结束公里数"
 
-
+  views_certification_application:
+    title: "使用证照申请"
+    certificater_name: "证照名称"
+    real_user_name: "申请人"
+    out_date: "借出日"
+    back_date: "归还日期"
+    reason: "使用用途"
+    use_mode: "使用方式"
+    details: "详细使用说明"
 
   activerecord:
     errors:
@@ -229,6 +238,7 @@ zh-CN:
       payment_application: "付款申请(对公)"
       contract_application: "合同申请"
       billing_application: "开票申请"
+      certification_application: "使用证照申请"
 
     state:
       application:
@@ -319,7 +329,7 @@ zh-CN:
     role:
       operator: "管理员"
       admin: "行政"
-      human_resources: "人事"
+      human_resource: "人事"
       finance: "财务"
       sale: "销售"
       developer: "普通"

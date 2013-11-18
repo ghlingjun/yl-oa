@@ -175,10 +175,10 @@ zh-CN:
     end_km_num: "结束公里数"
 
   views_certification_application:
-    title: "使用证照申请"
+    title: "证照使用申请"
     certificater_name: "证照名称"
-    real_user_name: "申请人"
-    out_date: "借出日"
+    real_user_name: "实际使用人"
+    out_date: "借出日期"
     back_date: "归还日期"
     reason: "使用用途"
     use_mode: "使用方式"
@@ -380,6 +380,14 @@ zh-CN:
       use:
         invoice_17percent: "17%增票"
         invoice_6percent: "6%增票"
+    certification_application:
+      use:
+        official_business: "公司办事"
+        persinal_business: "个人办事"
+      use_mode:
+        stamp: "盖章"
+        copy: "复印"
+        borrow: "出借"
 
   txt:
     footer_message: "Two's company. Three's a forum. More's a Beast."

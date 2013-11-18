@@ -28,25 +28,10 @@
   </p></div>
 
   <div><p>
-    <label for="out_date" >
-      <%= I18n.t 'views_certification_application.out_date' %>
-    </label>
-    <%= f.text_field :out_date, :class => "datePicker", :size => '15' %>
-  </p></div>
-
-  <div><p>
-    <label for="back_date" >
-      <%= I18n.t 'views_certification_application.back_date' %>
-    </label>
-    <%= f.text_field :back_date, :class => "datePicker", :size => '15' %>
-  </p></div>
-
-
-  <div><p>
     <label for="reason" >
       <%= I18n.t 'views_certification_application.reason' %>
     </label>
-    <%= f.text_field :reason, :size => '15' %>
+    <%= render 'application/reason_radio', :f => f, :reason_names => CertificationApplication::USE%>
   </p></div>
 
   <div><p>
@@ -54,6 +39,18 @@
       <%= I18n.t 'views_certification_application.use_mode' %>
     </label>
     <%= f.text_field :use_mode, :size => '15' %>
+  </p></div>
+
+  <div><p>
+    <label for="out_date" >
+      <%= I18n.t 'views_certification_application.out_date' %>
+    </label>
+    <%= f.text_field :out_date, :class => "datePicker", :size => '15' %>
+  
+    <label for="back_date" >
+      <%= I18n.t 'views_certification_application.back_date' %>
+    </label>
+    <%= f.text_field :back_date, :class => "datePicker", :size => '15' %>
   </p></div>
 
   <div><p>

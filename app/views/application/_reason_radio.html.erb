@@ -1,0 +1,9 @@
+<% reason_names.each do |reason| %>
+  <%= f.radio_button 'reason', reason, :selected => true %>
+  <% if reason == I18n.t('init_data.application.use.other') %>
+    <%= text_field_tag 'reason', '', :size => "12", 
+    :value => I18n.t('init_data.application.use.other') %>
+  <% else %>
+    <%= reason %>
+  <% end %>
+<% end %>

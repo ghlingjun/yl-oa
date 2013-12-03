@@ -5,7 +5,7 @@ class WorkLog < ActiveRecord::Base
 
   belongs_to :user
 
-  scope :filter_by_month, lambda{|q|  where('log_date >= ? and log_date <= ?', q, q.next_month)}
+  scope :filter_by_month, lambda{|q| where('log_date >= ? and log_date <= ?', q, q.next_month)}
 
   class << self
     def statistics_by_user(user_name, filter_date)

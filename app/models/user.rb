@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
 
   has_many :certification_applications
 
-  scope :search_for_real_name, lambda{|q| {:conditions => ['real_name LIKE ?', "%#{q}%"]}}
+  scope :search_for_real_name, lambda{|q| {:conditions => ['name LIKE ? and name not in (?, ?)', "%#{q}%", "root", "operator"] }; }
 
   acts_as_tree :order=>:name, :dependent => :nullify
 

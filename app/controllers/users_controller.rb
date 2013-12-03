@@ -38,11 +38,11 @@ class UsersController < ApplicationController
   end
 
   def list
-    if params[:term]
-      @users = User.search_for_real_name(params[:term]).order(:real_name)
-    else
-      @users = User.order(:real_name)
-    end
+    # if params[:term]
+      @users = User.search_for_real_name(params[:term]).order(:name)
+    # else
+    #   @users = User.order(:name)
+    # end
 
     respond_to do |format|
       format.html # index.html.erb

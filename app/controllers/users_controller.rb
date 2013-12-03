@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   # GET /users.xml
   before_filter :check_authorization_unless_modify_own_info, :only=>[:show]
   before_filter :check_authorization_unless_js_respond, :only=>[:index]
-  skip_before_filter :check_authorization, :only=>[:settings, :update, :show, :index]
+  skip_before_filter :check_authorization, :only=>[:settings, :update, :show, :index, :list]
 
   def index
     if params[:term]
@@ -34,6 +34,20 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
+    end
+  end
+
+  def list
+    if params[:term]
+      @users = User.search_for_real_name(params[:term]).order(:real_name)
+    else
+      @users = User.order(:real_name)
+    end
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @users }
+      format.js
     end
   end
 

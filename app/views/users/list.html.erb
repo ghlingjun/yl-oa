@@ -1,0 +1,37 @@
+<%= render 'side_bar/daily_office_side_bar' %>
+<h5><%= I18n.t 'txt.views_users.find_a_contact', :default => 'Find a contact' %></h5>
+
+<%= form_tag contacts_path, :method => 'get' do %>
+  <p>
+    <label><%= I18n.t 'txt.views_users.display_name_or_login', :default => 'Display name' %></label>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag I18n.t('txt.views_users.search_title', :default => "Search") %>
+  </p>
+<% end %>
+
+<h1 style="margin-top:0;"><%= I18n.t 'txt.contacts', :default => 'Contacts' %></h1>
+<p class="subtitle">
+  用户个数:<%= @users.size%>
+</p>
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <th class="la" width="30%"><%= I18n.t 'txt.views_users.contact_name', :default => 'Contact Name' %></th>
+    <th width="30%"><%= I18n.t 'txt.views_users.current_status_title', :default => "email" %></th>
+    <th width="10%"><%= I18n.t 'txt.views_users.mobile', :default => 'Mobile' %></th>
+    <th width="10%"><%= I18n.t 'txt.views_users.work_phone', :default => 'Work Phone' %></th>
+    <th width="10%"><%= I18n.t 'txt.views_users.micro_msg', :default => 'Micro Msg' %></th>
+    <th width="10%"><%= I18n.t 'txt.views_users.qq', :default => 'QQ' %></th>
+  </tr>
+<% @users.each do |user|%>
+  <tr>
+    <td>
+      <span style="color:#666"><%= user.real_name %></span>
+    </td>
+    <td class="ca inv"><%= user.email %></td>
+    <td class="c3" ><%= user.mobile_phone %></td>
+    <td class="ca inv"><%= user.work_phone %></td>
+    <td class="c3" ><%= user.weixin %></td>
+    <td class="ca inv"><%= user.qq %></td>
+  </tr>
+<% end %>
+</table>

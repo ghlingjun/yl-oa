@@ -52,6 +52,7 @@ zh-CN:
       prompt_msg: "提示消息"
       daily_office_routine: "工作流"
       unprocessed_application: "待处理事项"
+      contacts: "通讯录"
     admin_affaire:
       statistics: "统计"
       use_car_registration: "用车登记统计"

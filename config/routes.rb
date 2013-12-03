@@ -41,6 +41,8 @@ YunlingOA::Application.routes.draw do
 
   match 'application/:id/download/' => 'application#download', :as => 'download_application'
 
+  match '/contacts' => 'users#list', :as => 'contacts'
+
   namespace :admin do
     resources :use_car_registrations
     match 'statistics' => 'certifications#statistics', :as => :statistics

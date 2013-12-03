@@ -1,0 +1,38 @@
+<style>
+    .ui-datepicker-calendar {
+        display: none;
+    }
+</style>
+
+<%= render 'side_bar/admin_affaire_side_bar' %>
+<h1 style="margin-top:0;"><%= I18n.t("views_work_log.title")%></h1>
+<p class="subtitle">
+  <%= I18n.t("views_work_log.total_notices_prompt") + ":" + @work_logs.size.to_s%>
+</p>
+<%= form_tag admin_work_logs_path, :method => 'get' do %>
+<p>
+  <label><%= I18n.t 'views_work_log.select_find_date', :default => 'select_find_date' %></label>
+  <%= text_field_tag :q, params[:q], :class => "monthPicker", :size => '15' %>
+  <%= hidden_field_tag :real_name, params[:real_name]%>
+<%= submit_tag I18n.t('operate.query') %></p>
+<% end %>
+
+<table border="0" cellspacing="0" cellpadding="0" class="wide notices">
+  <tr>
+    <th class="la" width="25%"><%= I18n.t 'views_work_log.owner' %></th>
+    <th class="la" width="25%"><%= I18n.t 'activerecord.attributes.common.create_at' %></th>
+    <th class="la" width="25%"><%= I18n.t 'views_work_log.logdate' %></th>
+    <th class="la" width="25%"><%= I18n.t 'views_work_log.remote_ip' %></th>
+  </tr>
+
+<% @work_logs.each do |work_log| %>
+  <tr>
+    <td><%= work_log.user_real_name %></td>
+    <td><%= l(work_log.created_at, :format => :long) %></td>
+    <td><%= work_log.log_date %></td>
+    <td><%= work_log.remote_ip %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= render 'application/pagination', :posts =>  @work_logs %>

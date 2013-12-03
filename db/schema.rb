@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131115061826) do
+ActiveRecord::Schema.define(:version => 20131202015813) do
 
   create_table "application_receivers", :force => true do |t|
     t.integer  "application_id"
@@ -147,6 +147,10 @@ ActiveRecord::Schema.define(:version => 20131115061826) do
     t.string   "real_name"
     t.string   "position"
     t.integer  "parent_id"
+    t.string   "qq"
+    t.string   "weixin"
+    t.string   "mobile_phone"
+    t.string   "work_phone"
   end
 
   create_table "work_logs", :force => true do |t|

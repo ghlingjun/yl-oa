@@ -1,23 +1,22 @@
 
 <%= form_for user do |settings| %>
-    <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %>
-        prohibited this user from being saved:</h2>
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <% if user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(user.errors.count, "error") %>
+      prohibited this user from being saved:</h2>
+    <ul>
+    <% user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
-
-  <p>
-    <label for="name"><%= I18n.t 'activerecord.attributes.user.name', :default => 'login_name' %></label></p>
-  <p>
-    <%= settings.text_field :name ,:class=>get_disable_class_name_if_necessary%>
-  </p>
+<p>
+  <label for="name"><%= I18n.t 'activerecord.attributes.user.name', :default => 'login_name' %></label></p>
+<p>
+  <%= settings.text_field :name ,:class=>get_disable_class_name_if_necessary%>
+</p>
 
 <p>
   <label for="email"><%=  I18n.t 'activerecord.attributes.user.email', :default => 'Email' %></label><br />
@@ -65,6 +64,26 @@
   <%else%>
     <%= get_parent_name(user)%>
   <%end%>
+</p>
+
+<p>
+  <label for="mobile_phone"><%=  I18n.t 'activerecord.attributes.user.mobile_phone', :default => 'Mobile Phone' %></label><br />
+  <%= settings.text_field :mobile_phone %>
+</p>
+
+<p>
+  <label for="work_phone"><%=  I18n.t 'activerecord.attributes.user.work_phone', :default => 'Work Phone' %></label><br />
+  <%= settings.text_field :work_phone %>
+</p>
+
+<p>
+  <label for="weixin"><%=  I18n.t 'activerecord.attributes.user.weixin', :default => 'Micro Message' %></label><br />
+  <%= settings.text_field :weixin %>
+</p>
+
+<p>
+  <label for="qq"><%=  I18n.t 'activerecord.attributes.user.qq', :default => 'QQ' %></label><br />
+  <%= settings.text_field :qq %>
 </p>
 
 <p><%= settings.submit %></p>

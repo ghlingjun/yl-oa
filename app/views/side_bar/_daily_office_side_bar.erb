@@ -1,5 +1,9 @@
 <% content_for :right do %>
   <h5 style="margin-bottom:1.0em;">
+    <%= link_to I18n.t('side_bar.daily_office.contacts'), contacts_path %>
+  </h5>
+
+  <h5 style="margin-bottom:1.0em;">
     <%= I18n.t 'side_bar.daily_office.work_log' %>
   </h5>
   <ul class="flat" style="margin-top:1em;">

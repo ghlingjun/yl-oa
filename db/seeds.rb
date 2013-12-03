@@ -7,22 +7,11 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 if true
-  #encoding: utf-8
-
+  # encoding: utf-8
   # Role.delete_all
-  # operator = Role.create!(:id=>1, :name=>Role::ROLES[:operator])
-  # data = {}
-  # data["id"] = 1
-  # data["name"] = Role::ROLES[:operator]
-  # operator = Role.find_or_create_by_id(data["id"]).update_attributes(data)
   operator = Role.find_or_initialize_by_id(1)
   operator.name = Role::ROLES[:operator]
   operator.save!
-  # admin = Role.create!(:id=>2, :name=>Role::ROLES[:admin])
-  # finance = Role.create!(:id=>3, :name=>Role::ROLES[:finance])
-  # sale = Role.create!(:id=>4, :name=>Role::ROLES[:sale])
-  # developer = Role.create!(:id=>5, :name=>Role::ROLES[:developer])
-  # human_resource = Role.create!(:id=>6, :name=>Role::ROLES[:human_resource])
   admin = Role.find_or_initialize_by_id(2)
   admin.name = Role::ROLES[:admin]
   admin.save!
@@ -50,8 +39,10 @@ if true
   users_read = Right.create!(:resource => "users", :operation => "READ")
   users_update = Right.create!(:resource => "users", :operation => "UPDATE")
   users_delete = Right.create!(:resource => "users", :operation => "DELETE")
+  Role.all.each do |role|
+    role.rights << users_read
+  end
   operator.rights << users_create
-  operator.rights << users_read
   operator.rights << users_update
   operator.rights << users_delete
 
@@ -231,4 +222,5 @@ if true
       role.rights << certification_application
     end
   end
+
 end

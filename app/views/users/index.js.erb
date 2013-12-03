@@ -1,5 +1,5 @@
 <% data = [] #CHANGES_HERE -%>
 <% for user in @users -%>
 <% data << {:value => user.real_name} -%>
-<%end -%>
+<% end -%>
 <%=raw data.to_json %>

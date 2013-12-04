@@ -185,6 +185,10 @@ zh-CN:
     use_mode: "使用方式"
     details: "详细使用说明"
 
+  views_item_application:
+    total_application_prompt: "事项报批条数"
+    title: "事项报批申请单"
+
   activerecord:
     errors:
       messages:
@@ -231,7 +235,7 @@ zh-CN:
 
       communicate_message: "通讯消息"
       prompt_message: "提示消息"
-      item_application: "物品申请"
+      item_application: "事项报批"# "物品申请"
       leave_application: "请假申请"
       use_car_registration: "用车登记"
       business_trip_application: "外出/出差登记"
@@ -275,12 +279,15 @@ zh-CN:
         type: "消息类型"
         create_at: "创建时间"
         receiver_ids: "接收者"
+        state: "状态"
       application:
         sender: "申请人"
         type: "申请类型"
         created_at: "申请时间"
         reason: "事由"
         attachment_file: "附件文件"
+        title: "标题"
+        content: "内容"
       leave_application:
         use: "请假类型"
         reason: "请假事由"

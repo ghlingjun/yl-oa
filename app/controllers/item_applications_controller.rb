@@ -19,7 +19,6 @@ class ItemApplicationsController < ApplicationController
     end
   end
 
-
   def create
     @item_application = ItemApplication.new(params[:item_application])
     @item_application.sender = current_user

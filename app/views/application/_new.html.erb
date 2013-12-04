@@ -1,3 +1,4 @@
+<h1 style="margin-top:0;"><%= I18n.t "activerecord.models.#{type}"%></h1>
 <%= form_for application do |f| %>
   <% if application.errors.any? %>
     <div id="error_explanation">
@@ -11,17 +12,15 @@
     </div>
   <% end %>
 
-
-    <p>
-      <label for="title"><%= I18n.t 'activerecord.attributes.application.title', :default => 'title' %></label></p>
-    <p>
-      <%= f.text_field :title %>
-    </p>
+  <p>
+    <label for="item_name"><%= I18n.t 'activerecord.attributes.application.title', :default => 'title' %></label>
+  </p>
+  <p><%= f.text_field :item_name %></p>
 
   <p>
-    <label for="content"><%= I18n.t 'activerecord.attributes.application.content'%>
+    <label for="reason"><%= I18n.t 'activerecord.attributes.application.content'%>
     </label><br/>
-    <%= f.text_area :content %>
+    <%= f.text_area :reason %>
   </p>
 
   <p><%= submit_tag I18n.t('operate.create') %></p>

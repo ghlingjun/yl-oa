@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
 #  attr_accessible :name, :real_name, :email, :password, :password_confirmation
 
-  Positions = {:staff => I18n.t("init_data.position.staff"),
-        :manager => I18n.t("init_data.position.manager"),
-        :department_manager => I18n.t("init_data.position.department_manager"),
-        :vice_president => I18n.t("init_data.position.vice_president"),
-        :president => I18n.t("init_data.position.president")}
+Positions = {:staff => I18n.t("init_data.position.staff"),
+  :manager => I18n.t("init_data.position.manager"),
+  :department_manager => I18n.t("init_data.position.department_manager"),
+  :vice_president => I18n.t("init_data.position.vice_president"),
+  :president => I18n.t("init_data.position.president")}
 
   has_and_belongs_to_many :roles
 
@@ -132,11 +132,11 @@ class User < ActiveRecord::Base
   end
 
   private
-    def password_must_be_present
-      errors.add(:password, "Missing password") unless hashed_password.present?
-    end
+  def password_must_be_present
+    errors.add(:password, "Missing password") unless hashed_password.present?
+  end
 
-    def generate_salt
-      self.salt = self.object_id.to_s + rand.to_s
-    end
+  def generate_salt
+    self.salt = self.object_id.to_s + rand.to_s
+  end
 end

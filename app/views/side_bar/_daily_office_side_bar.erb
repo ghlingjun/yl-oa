@@ -1,61 +1,61 @@
 <% content_for :right do %>
-  <h5 style="margin-bottom:1.0em;">
-    <%= link_to I18n.t('side_bar.daily_office.contacts'), contacts_path %>
-  </h5>
+<h5 style="margin-bottom:1.0em;">
+  <%= link_to I18n.t('side_bar.daily_office.contacts'), contacts_path %>
+</h5>
 
-  <h5 style="margin-bottom:1.0em;">
-    <%= I18n.t 'side_bar.daily_office.work_log' %>
-  </h5>
-  <ul class="flat" style="margin-top:1em;">
-    <li>
-      <%= link_to I18n.t('side_bar.daily_office.work_log'), work_logs_path %>
-    </li>
-    <li>
-      <%= link_to I18n.t('side_bar.daily_office.subordinate_work_log'), work_logs_path(:params=>{:flag=>"subordinate"})%>
-    </li>
-  </ul>
+<h5 style="margin-bottom:1.0em;">
+  <%= I18n.t 'side_bar.daily_office.work_log' %>
+</h5>
+<ul class="flat" style="margin-top:1em;">
+  <li>
+    <%= link_to I18n.t('side_bar.daily_office.work_log'), work_logs_path %>
+  </li>
+  <li>
+    <%= link_to I18n.t('side_bar.daily_office.subordinate_work_log'), work_logs_path(:params=>{:flag=>"subordinate"})%>
+  </li>
+</ul>
 
-  <h5 style="margin-bottom:1.0em;">
-    <%= I18n.t 'side_bar.daily_office.communicate_message_manage'%>
-  </h5>
-  <ul class="flat" style="margin-top:1em;">
-    <li>
-      <%= link_to  I18n.t('side_bar.daily_office.inbox') + "(#{current_user.receive_messages.communicate_messages.unread.size})", 
-      communicate_messages_path(:params=>{:flag=>"receive"}) %>
-    </li>
-    <li>
-      <%= link_to  I18n.t('side_bar.daily_office.outbox') , 
-      communicate_messages_path(:params=>{:flag=>"send"}) %>
-    </li>
-    <li>
-      <%= link_to  I18n.t('side_bar.daily_office.prompt_msg') + "(#{current_user.receive_messages.prompt_messages.unread.size})", 
-      prompt_messages_path %>
-    </li>
-  </ul>
-  <hr/>
+<h5 style="margin-bottom:1.0em;">
+  <%= I18n.t 'side_bar.daily_office.communicate_message_manage'%>
+</h5>
+<ul class="flat" style="margin-top:1em;">
+  <li>
+    <%= link_to  I18n.t('side_bar.daily_office.inbox') + "(#{current_user.receive_messages.communicate_messages.unread.size})", 
+    communicate_messages_path(:params=>{:flag=>"receive"}) %>
+  </li>
+  <li>
+    <%= link_to  I18n.t('side_bar.daily_office.outbox') , 
+    communicate_messages_path(:params=>{:flag=>"send"}) %>
+  </li>
+  <li>
+    <%= link_to  I18n.t('side_bar.daily_office.prompt_msg') + "(#{current_user.receive_messages.prompt_messages.unread.size})", 
+    prompt_messages_path %>
+  </li>
+</ul>
+<hr/>
 
-  <h5 style="margin-bottom:1.0em;">
-    <%= I18n.t 'side_bar.daily_office.unprocessed_application'%>
-  </h5>
+<h5 style="margin-bottom:1.0em;">
+  <%= I18n.t 'side_bar.daily_office.unprocessed_application'%>
+</h5>
 
-  <ul class="flat" style="margin-top:1em;">
-    <li><%= link_to I18n.t('side_bar.daily_office.unprocessed_application') + "(#{current_user.receive_applications.pending.size})" , application_receivers_path%></li>
-  </ul>
+<ul class="flat" style="margin-top:1em;">
+  <li><%= link_to I18n.t('side_bar.daily_office.unprocessed_application') + "(#{current_user.receive_applications.pending.size})" , application_receivers_path%></li>
+</ul>
 
-  <h5 style="margin-bottom:1.0em;">
-    <%= I18n.t 'side_bar.daily_office.daily_office_routine'%>
-  </h5>
+<h5 style="margin-bottom:1.0em;">
+  <%= I18n.t 'side_bar.daily_office.daily_office_routine'%>
+</h5>
 
-  <ul class="flat" style="margin-top:1em;">
-    <li><%= link_to I18n.t('activerecord.models.use_car_registration'), use_car_registrations_path %></li>
-    <li><%= link_to I18n.t('activerecord.models.business_trip_application'), business_trip_applications_path() %></li>
-    <li><%= link_to I18n.t('activerecord.models.expense_application'), expense_applications_path %></li>
-    <li><%= link_to I18n.t('activerecord.models.payment_application'), payment_applications_path %></li>
-    <li><%= link_to I18n.t('activerecord.models.contract_application'), contract_applications_path %></li>
-    <li><%= link_to I18n.t('activerecord.models.billing_application'), billing_applications_path %></li>
-    <li><%= link_to I18n.t('activerecord.models.leave_application'), leave_applications_path %></li>
-    <li><%= link_to I18n.t('activerecord.models.certification_application'), certification_applications_path %></li>
-    <li><%= link_to I18n.t('activerecord.models.item_application'), item_applications_path %></li>
-  </ul>
-    
+<ul class="flat" style="margin-top:1em;">
+  <li><%= link_to I18n.t('activerecord.models.use_car_registration'), use_car_registrations_path %></li>
+  <li><%= link_to I18n.t('activerecord.models.business_trip_application'), business_trip_applications_path() %></li>
+  <li><%= link_to I18n.t('activerecord.models.expense_application'), expense_applications_path %></li>
+  <li><%= link_to I18n.t('activerecord.models.payment_application'), payment_applications_path %></li>
+  <li><%= link_to I18n.t('activerecord.models.contract_application'), contract_applications_path %></li>
+  <li><%= link_to I18n.t('activerecord.models.billing_application'), billing_applications_path %></li>
+  <li><%= link_to I18n.t('activerecord.models.leave_application'), leave_applications_path %></li>
+  <li><%= link_to I18n.t('activerecord.models.certification_application'), certification_applications_path %></li>
+  <!-- <li><%= link_to I18n.t('activerecord.models.item_application'), item_applications_path %></li> -->
+</ul>
+
 <% end %>

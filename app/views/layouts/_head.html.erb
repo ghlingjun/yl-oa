@@ -12,9 +12,11 @@
     <%= link_to I18n.t('menu.finance_manage'), finance_expense_applications_path, :rel => 'home' %>
   </li>
   <li><%= link_to I18n.t('menu.sale_manage'), sale_contract_applications_path, :rel => 'home'%></li>
-  <li><%= link_to I18n.t('menu.system_manage'), users_path, :rel => 'home' %></li>
 
   <% if logged_in? %>
+    <% if current_user.name=="root" || current_user.name=="operator" %>
+      <li><%= link_to I18n.t('menu.system_manage'), users_path, :rel => 'home' %></li>
+    <% end %>
     <li class="login">
       <%=  link_to current_user.real_name, user_path(current_user) %>
     </li>

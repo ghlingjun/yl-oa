@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   def list
     # if params[:term]
-      @users = User.search_for_real_name(params[:term]).order(:name)
+    @users = User.search_for_real_name(params[:term]).order(:name)
     # else
     #   @users = User.order(:name)
     # end
@@ -82,13 +82,13 @@ class UsersController < ApplicationController
           :notice => "User #{@user.name} was successfully created.") }
         format.xml  { render :xml => @user,
           :status => :created, :location => @user }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors,
-          :status => :unprocessable_entity }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @user.errors,
+            :status => :unprocessable_entity }
+          end
+        end
       end
-    end
-  end
 
   # PUT /users/1
   # PUT /users/1.xml
@@ -103,9 +103,9 @@ class UsersController < ApplicationController
         format.html { render :action => "edit" }
         format.xml  { render :xml => @user.errors,
           :status => :unprocessable_entity }
+        end
       end
     end
-  end
 
   # DELETE /users/1
   # DELETE /users/1.xml
@@ -124,29 +124,29 @@ class UsersController < ApplicationController
   end
 
   private
-    def check_authorization_unless_modify_own_info
-      return true if current_user.can?(action_name, controller_name) || User.find(params[:id]) == current_user
-      redirect_to root_url,
-              :notice=>I18n.t("error.permit_deny")
-    end
+  def check_authorization_unless_modify_own_info
+    return true if current_user.can?(action_name, controller_name) || User.find(params[:id]) == current_user
+    redirect_to root_url,
+    :notice=>I18n.t("error.permit_deny")
+  end
 
-    def check_authorization_unless_js_respond
-      return true if current_user.can?(action_name, controller_name) || request.xhr?
-      redirect_to root_url,
-              :notice=>I18n.t("error.permit_deny")
-    end
+  def check_authorization_unless_js_respond
+    return true if current_user.can?(action_name, controller_name) || request.xhr?
+    redirect_to root_url,
+    :notice=>I18n.t("error.permit_deny")
+  end
 
-    def convert_to_parent_id_from_real_name_if_necessary
-      return if not params[:user].has_key?(:parent_id)
-      if u = User.find_by_real_name(params[:user][:parent_id])
-        params[:user][:parent_id] = u.id
-      else
-        params[:user][:parent_id] = nil
-      end
+  def convert_to_parent_id_from_real_name_if_necessary
+    return if not params[:user].has_key?(:parent_id)
+    if u = User.find_by_real_name(params[:user][:parent_id])
+      params[:user][:parent_id] = u.id
+    else
+      params[:user][:parent_id] = nil
     end
+  end
 
-    def find_user
-      @user = User.find(params[:id])
-    end
+  def find_user
+    @user = User.find(params[:id])
+  end
 
 end

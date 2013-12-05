@@ -7,7 +7,7 @@
 <%= render 'side_bar/admin_affaire_side_bar' %>
 <h1 style="margin-top:0;"><%= I18n.t("views_work_log.title")%></h1>
 <p class="subtitle">
-  <%= I18n.t("views_work_log.total_notices_prompt") + ":" + @work_logs.size.to_s%>
+  <%= I18n.t("views_work_log.total_notices_prompt") + ":" + @work_logs.size.to_s %>
 </p>
 <%= form_tag admin_work_logs_path, :method => 'get' do %>
 <p>
@@ -35,4 +35,4 @@
 <% end %>
 </table>
 
-<%= render 'application/pagination', :posts =>  @work_logs %>
+<%= render 'application/pagination', :posts => @work_logs %>

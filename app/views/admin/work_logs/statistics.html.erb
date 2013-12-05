@@ -1,13 +1,13 @@
 <style>
-    .ui-datepicker-calendar {
-        display: none;
-    }
+  .ui-datepicker-calendar {
+    display: none;
+  }
 </style>
 <%= render 'side_bar/admin_affaire_side_bar' %>
 <h1 style="margin-top:0;"><%= I18n.t("views_work_log.work_log_statistics")%></h1>
 
 <p>
-  <%= form_tag admin_statistics_path, :method => 'get' do %>
+  <%= form_tag admin_work_statistics_path, :method => 'get' do %>
     <label><%= I18n.t 'views_work_log.select_statistics_date'%></label>
     <%= text_field_tag :filter_date, params[:filter_date], :class => "monthPicker", :size => '15' %>
 
@@ -26,7 +26,8 @@
 
 <% @statistics.each do |statistic| %>
   <tr>
-    <td><%= link_to statistic.first, admin_work_logs_path(:real_name => statistic.first)%></td>
+    <!-- <td><%= link_to statistic.first, admin_work_statistics_path(:real_name => statistic.first) %></td> -->
+    <td><%= statistic.first %></td>
     <td><%= statistic.last %></td>
   </tr>
 <% end %>

@@ -56,6 +56,8 @@ zh-CN:
     admin_affaire:
       statistics: "统计"
       use_car_registration: "用车登记统计"
+      work_log_mgr: "工作日志管理"
+      work_log: "工作日志统计"
     finance:
       statis: "统计"
       expense_statis: "费用申请统计"

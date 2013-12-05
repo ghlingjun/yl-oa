@@ -1,9 +1,9 @@
 <%= render 'side_bar/daily_office_side_bar' %>
-<h5><%= I18n.t 'txt.views_users.find_a_contact', :default => 'Find a contact' %></h5>
+<h5><%= I18n.t 'txt.views_users.find_contacts', :default => 'Find Contacts' %></h5>
 
 <%= form_tag contacts_path, :method => 'get' do %>
   <p>
-    <label><%= I18n.t 'txt.views_users.display_name_or_login', :default => 'Display name' %></label>
+    <label><%= I18n.t 'txt.views_users.display_name_or_login', :default => 'Last Name' %></label>
     <%= text_field_tag :q, params[:q] %>
     <%= submit_tag I18n.t('txt.views_users.search_title', :default => "Search") %>
   </p>

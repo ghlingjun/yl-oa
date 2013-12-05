@@ -15,8 +15,8 @@ class UsersController < ApplicationController
   skip_before_filter :check_authorization, :only=>[:settings, :update, :show, :index, :list]
 
   def index
-    if params[:term]
-      @users = User.search_for_real_name(params[:term]).order(:real_name)
+    if params[:q]
+      @users = User.search_for_real_name(params[:q]).order(:real_name)
     else
       @users = User.order(:real_name)
     end
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   def list
     # if params[:term]
-    @users = User.search_for_real_name(params[:term]).order(:name)
+    @users = User.search_for_real_name(params[:q]).order(:name)
     # else
     #   @users = User.order(:name)
     # end

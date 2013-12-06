@@ -1,21 +1,18 @@
 <style>
-  .ui-datepicker-calendar {
-    display: none;
-  }
+.ui-datepicker-calendar {
+  display: none;
+}
 </style>
 <%= render 'side_bar/admin_affaire_side_bar' %>
 <h1 style="margin-top:0;"><%= I18n.t("views_work_log.work_log_statistics")%></h1>
-
 <p>
-  <%= form_tag admin_work_statistics_path, :method => 'get' do %>
-    <label><%= I18n.t 'views_work_log.select_statistics_date'%></label>
-    <%= text_field_tag :filter_date, params[:filter_date], :class => "monthPicker", :size => '15' %>
-
-    <label><%= I18n.t 'views_work_log.select_statistics_user_name'%></label>
-    <%= text_field_tag :user_name , params[:user_name], :class=>"autocomplete_input_single_text"%>
+<%= form_tag admin_work_statistics_path, :method => 'get' do %>
+  <label><%= I18n.t 'views_work_log.select_statistics_date'%></label>
+  <%= text_field_tag :filter_date, params[:filter_date], :class => "monthPicker", :size => '15' %>
+  <label><%= I18n.t 'views_work_log.select_statistics_user_name'%></label>
+  <%= text_field_tag :user_name , params[:user_name], :class=>"autocomplete_input_single_text" %>
   <%= submit_tag I18n.t('operate.query') %>
-  <%= button_tag I18n.t('operate.reset'), :class => "reset"%>
-</p>
+  <%= button_tag I18n.t('operate.reset'), :class =>"reset" %></p>
 <% end %>
 
 <table border="0" cellspacing="0" cellpadding="0" class="wide notices">
@@ -24,12 +21,13 @@
     <th class="la" width="33%"><%= I18n.t 'views_work_log.total_num' %></th>
   </tr>
 
-<% @statistics.each do |statistic| %>
+  <% @statistics.each do |statistic| %>
   <tr>
-    <!-- <td><%= link_to statistic.first, admin_work_statistics_path(:real_name => statistic.first) %></td> -->
-    <td><%= statistic.first %></td>
+    <td>
+      <%= link_to statistic.first, admin_work_logs_path(:real_name => statistic.first), :class => "admin" %>
+    </td>
+    <!-- <td><%= statistic.first %></td> -->
     <td><%= statistic.last %></td>
   </tr>
-<% end %>
+  <% end %>
 </table>
-

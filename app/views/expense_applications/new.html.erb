@@ -1,29 +1,28 @@
-<%content_for :javascript_epilogue do%>
-    $('#project_name').hide();
-    $("input:[name=expense_application[use]]:radio").change(
-        function(){
-            var $select_var =  $("input:[name=expense_application[use]]:radio:checked").val();
-            if($select_var == "项目"){
-                $('#project_name').show();
-            }else{
-                $('#project_name').hide();
-            }
-        }
-    );
-<%end%>
+<% content_for :javascript_epilogue do %>
+  $('#project_name').hide();
+  $("input:[name=expense_application[use]]:radio").change(
+  function() {
+    var $select_var =  $("input:[name=expense_application[use]]:radio:checked").val();
+    if($select_var == "项目") {
+      $('#project_name').show();
+    } else {
+      $('#project_name').hide();
+    }
+  }
+);
+<% end %>
 
 <%= render 'side_bar/daily_office_side_bar' %>
 <%= form_for @expense_application do |f| %>
   <% if @expense_application.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@expense_application.errors.count, "error") %>
-        &nbsp;prohibited this user from being saved:</h2>
-      <ul>
-        <% @expense_application.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+  <div id="error_explanation">
+    <h2><%= pluralize(@expense_application.errors.count, "error") %>&nbsp;prohibited this user from being saved:</h2>
+    <ul>
+      <% @expense_application.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
   <% end %>
 
   <p>
@@ -54,7 +53,7 @@
 
   <p id="project_name">
     <label for="project_name">
-        <%= I18n.t 'activerecord.attributes.expense_application.project_name'%>
+      <%= I18n.t 'activerecord.attributes.expense_application.project_name'%>
     </label>
     <br />
     <%= f.text_field :project_name, :size => "60" %>
@@ -73,8 +72,13 @@
     <%= f.text_area :reason, :size => "60x3" %>
   </p>
 
+  <p>
+    <label for="reason"><%= I18n.t 'activerecord.attributes.application.attachment_file'%></label><br/>
+    <%= f.file_field :attachment_file %>
+  </p>
+
   <p><%= submit_tag I18n.t('operate.commit') %></p>
+
 <% end %>
 
 <%= link_to I18n.t('operate.back'), expense_applications_path %>
-

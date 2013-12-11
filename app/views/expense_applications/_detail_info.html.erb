@@ -58,6 +58,17 @@
     <td><%= application.reason %></td>
   </tr>
 
+  <%if application.attachment_file.exists? %>
+      <tr>
+        <td>
+          <label>
+            <%= I18n.t 'activerecord.attributes.application.attachment_file' %>
+          </label>
+        </td>
+        <td><%= link_to(application.attachment_file_file_name, download_application_path(application)) %></td>
+      </tr>
+  <%end%>
+
   <%= render("application/detail_state_info", :application => application) %>
 </table>
 </div>

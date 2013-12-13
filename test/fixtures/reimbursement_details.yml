@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  application_id: 
+  cost_type_id: 
+  business_purpose_id: 
+  city: 
+  consume_date: 2013-12-12 16:39:52
+  money: 
+  money: 
+  currency_id: 
+  invoice: false
+  customer: 
+  footnote: 
+  location: 
+  participant: 
+
+two:
+  application_id: 
+  cost_type_id: 
+  business_purpose_id: 
+  city: 
+  consume_date: 2013-12-12 16:39:52
+  money: 
+  money: 
+  currency_id: 
+  invoice: false
+  customer: 
+  footnote: 
+  location: 
+  participant: 

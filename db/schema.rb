@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131202015813) do
+ActiveRecord::Schema.define(:version => 20131212083951) do
 
   create_table "application_receivers", :force => true do |t|
     t.integer  "application_id"
@@ -52,6 +52,12 @@ ActiveRecord::Schema.define(:version => 20131202015813) do
     t.string   "finance_opinion"
   end
 
+  create_table "business_purposes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "certification_applications", :force => true do |t|
     t.string   "real_user_name"
     t.integer  "user_id"
@@ -63,6 +69,18 @@ ActiveRecord::Schema.define(:version => 20131202015813) do
     t.text     "details"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+  end
+
+  create_table "cost_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "currencies", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "grants", :force => true do |t|
@@ -103,6 +121,23 @@ ActiveRecord::Schema.define(:version => 20131202015813) do
   end
 
   add_index "notices", ["user_id"], :name => "index_notices_on_user_id"
+
+  create_table "reimbursement_details", :force => true do |t|
+    t.integer  "application_id"
+    t.integer  "cost_type_id"
+    t.integer  "business_purpose_id"
+    t.string   "city"
+    t.datetime "consume_date"
+    t.decimal  "money",               :precision => 8, :scale => 2
+    t.integer  "currency_id"
+    t.boolean  "invoice"
+    t.string   "customer"
+    t.string   "footnote"
+    t.string   "location"
+    t.string   "participant"
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
+  end
 
   create_table "rights", :force => true do |t|
     t.string   "resource"

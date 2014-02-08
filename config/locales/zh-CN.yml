@@ -130,6 +130,19 @@ zh-CN:
     total_application_prompt: "费用申请条数"
     receiver: "接收者"
     title: "费用申请单"
+    reimbursement_detail:
+      title: 花费详情
+      cost_type: 费用种类
+      business_purpose: 商务目的
+      city: 城市
+      consume_date: 金额发生日期
+      money: 金额
+      currency: 币种
+      invoice: 发票
+      customer: 相关客户
+      location: 地点
+      footnote: 注明
+      participant: 参与人员
   views_payment_application:
     total_application_prompt: "付款申请条数"
     receiver: "接收者"

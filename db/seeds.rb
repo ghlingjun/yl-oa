@@ -28,11 +28,11 @@ if true
   human_resource.name = Role::ROLES[:human_resource]
   human_resource.save!
   
-  # User.delete_all
-  # root = User.create!(:name=>"root", :real_name=>I18n.t("init_data.user.name"), 
-  #   :email=>"root@gmail.com", :password=>"admin1314", 
-  #   :password_confirmation=>"admin1314", :position=>User::Positions[:staff])
-  # root.roles << operator
+  User.delete_all
+  root = User.create!(:name=>"root", :real_name=>I18n.t("init_data.user.name"), 
+    :email=>"root@gmail.com", :password=>"admin1314", 
+    :password_confirmation=>"admin1314", :position=>User::Positions[:staff])
+  root.roles << operator
  
   Right.delete_all
   users_create = Right.create!(:resource => "users", :operation => "CREATE")

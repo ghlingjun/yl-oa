@@ -30,8 +30,8 @@ if true
   
   User.delete_all
   root = User.create!(:name=>"root", :real_name=>I18n.t("init_data.user.name"), 
-    :email=>"root@gmail.com", :password=>"admin1314", 
-    :password_confirmation=>"admin1314", :position=>User::Positions[:staff])
+    :email=>"root@gmail.com", :password=>"admin", 
+    :password_confirmation=>"admin", :position=>User::Positions[:staff])
   root.roles << operator
  
   Right.delete_all
